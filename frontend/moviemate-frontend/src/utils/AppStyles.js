@@ -1,32 +1,77 @@
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
+import Constants from "../utils/Constants";
 
 const useStyles = makeStyles({
-    cardContainer: {
-        background: "rgba(0,0,0,0.75)",
-        height: "200px",
-        width: "100%",
-        "@media only screen and (max-width: 800px)": {
-            width: "100vw",
-        },
-        padding: "68px",
-        paddingTop: "38px",
-        borderRadius: "5px",
+  //Main Screen
+  bg: {
+    width: "100%",
+    minHeight: "100vh",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundColor: Constants.MOVIEMATE_BACKGROUND,
+    color: Constants.MOVIEMATE_BACKGROUND,
+    "@media only screen and (max-width: 800px)": {
+      background: Constants.MOVIEMATE_BACKGROUND,
     },
-    button: {
-        width: "320px",
-        borderRadius: "4px",
+    overflowX: "hidden",
+  },
+  //Navbar 
+  navbar: {
+    width: "100vw",
+    height: "68px",
+    fontFamily: Constants.ROKKIT_FONT_FAMILY,
+    zIndex: "1000",
+    position: "fixed",
+    top: "0",
+    backgroundSize: "cover",
+    backgroundColor: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
+    color: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
+    "@media only screen and (max-width: 800px)": {
+      background: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
     },
-    bg: {
-        width: "100%",
-        minHeight: "160vh",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        color: "white",
-        "@media only screen and (max-width: 800px)": {
-          background: "black",
-        },
-        overflowX: "hidden",
-      },
-    });
+    overflowX: "hidden",
+  },
+  logo: {
+    fontSize: "32px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    width: "80px",
+    color: "white",
+    height: "68px",
+    paddingLeft: "30px",
+    justifyContent: "start",
+  },
+  searchBar: {
+    display: "flex",
+    alignContent:"center",
+    backgroundColor: "white",
+    "@media only screen and (max-width: 800px)": {
+      fontSize: "10px",
+      backgroundColor: "white",
+    },
+    top:15,
+    height:"5vh",
+    maxHeight:"5vh",
+    borderRadius: Constants.BORDER_RADIUS,
+  },
+  icons: {
+    display: "flex",
+    alignItems: "center",
+    height: "68px",
+    marginTop: "2px",
+  },
+  anIcon: {
+    color: "black",
+    minWidth: "40px",
+    minHeight: "40px",
+    borderRadius: "50px",
+    display: "flex",
+    
+   },
+  iconBg: {
+    backgroundColor: "rgba(0,0,0,0.05)",
+  },
+});
 
 export { useStyles }
