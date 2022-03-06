@@ -1,5 +1,5 @@
 class Constants  {
-    static BORDER_RADIUS = 10;
+    static BORDER_RADIUS = 5;
     static ROKKIT_FONT_FAMILY = "Rokkitt, serif";
     static WHITE = "#ffffff";
     static BLACK = "#000000";
