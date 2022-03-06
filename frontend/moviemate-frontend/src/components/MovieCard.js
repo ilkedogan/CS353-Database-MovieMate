@@ -4,6 +4,12 @@ import { fontSize } from "@mui/system";
 import axios from "axios";
 import React from "react";
 
+/**
+ * Metehan Sacakci
+ * 06.03.2022
+ * MovieCard 
+ */
+
 const MovieCard = () => {
 
     return(
