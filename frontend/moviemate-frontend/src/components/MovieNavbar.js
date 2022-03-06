@@ -17,7 +17,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { connect } from "react-redux";
 import React from "react";
-import { FormControl, InputLabel } from "@mui/material";
+import { FormControl, InputLabel, Typography } from "@mui/material";
 import Logo from "../utils/Logo.png";
 import Alert from "@mui/material/Alert";
 import { useStyles } from "../utils/AppStyles.js";
@@ -38,26 +38,30 @@ const MovieNavbar = ({
     return (
         <div className={classes.navbar}>
             <Grid container>
-                <Grid item xs={3}>
-                    <div
-                        className={classes.logo}>
-                        <a href="/#" style={
-                            {
-                                marginLeft: "10px",
-                                paddingTop: "10px",
-                                width: "200px",
-                                color: Constants.MOVIEMATE_GREEN,
-                                textDecoration: 'none',
-                            }}>
-                            MovieMate</a>
-                    </div>
+                <Grid item xs={3} stye={{
+                    alignItems: "center",
+                    cursor:"pointer"
+
+                }}>
+                    <Typography style={
+                        {
+                            alignItems: "center",
+                            fontSize: "32px",
+                            marginLeft: "10px",
+                            paddingTop: "16px",
+                            width: "200px",
+                            color: Constants.MOVIEMATE_GREEN,
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                            fontWeight:"600"
+                        }}>
+                        MovieMate</Typography>
                 </Grid>
-                <Grid item xs={3}>
-                    <FormControl sx={{ m: 1, borderRadius: '10px', width: '24vw', background: Constants.WHITE }} variant="filled" >
-                        <InputLabel 
+                <Grid item xs={3} style={{ alignItems: "center", alignContent: "center" }}>
+                    <FormControl sx={{ m: 1, borderRadius: '10px', width: '24vw', background: Constants.WHITE, }} variant="filled" >
+                        <InputLabel
                             style={{
                                 color: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
-                                fontWeight:"bold",
+                                fontWeight: "bold",
                             }}>
                             {"Search Movie"}
                         </InputLabel>
@@ -75,40 +79,45 @@ const MovieNavbar = ({
                     </FormControl>
 
                 </Grid>
-                <Grid
-                    item
-                    xs={2}
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
-                >
-                </Grid>
-                <Grid item xs={3}>
-                    <Grid
-                        container
-                        className={classes.icons}
-                        style={{
-                            display: "flex",
-                            alignItems: "start"
-                        }}
-                    >
-                    </Grid>
-                </Grid>
-                <Grid item xs={3}>
-                    <Grid
-                        container
-                        className={classes.icons}
-                        style={{
-                            display: "flex",
-                            alignItems: "start"
-                        }}
-                    >
-                    </Grid>
+                <Grid item xs={6} style={{
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                    paddingRight: "24px",
+                }}>
+
+                    <Typography style={{
+                        fontSize: "28px",
+                        color: Constants.WHITE,
+                        textDecoration: 'none',
+                        cursor:"pointer",
+                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                        fontWeight:"300"
+                    }}>
+                        Login </Typography>
+                    <div style={
+                        {
+                            fontSize: "28px",
+                            width: "60px",
+                            color: Constants.WHITE,
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+
+                        }}>
+                        | </div>
+                    <Typography style={
+                        {
+                            fontSize: "28px",
+                            color: Constants.WHITE,
+                            textDecoration: 'none',
+                            cursor:"pointer",
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                            fontWeight:"300"
+                        }}>
+                        Register</Typography>
+
                 </Grid>
             </Grid>
-        </div>
+        </div >
     );
 };
 

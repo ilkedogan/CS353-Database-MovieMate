@@ -18,7 +18,6 @@ const useStyles = makeStyles({
   //Navbar 
   navbar: {
     width: "100vw",
-    height: "68px",
     fontFamily: Constants.ROKKIT_FONT_FAMILY,
     zIndex: "1000",
     position: "fixed",
@@ -41,6 +40,11 @@ const useStyles = makeStyles({
     height: "68px",
     paddingLeft: "30px",
     justifyContent: "start",
+  },
+  log_reg: {
+    fontSize: "32px",
+    color: "white",
+    height: "68px"
   },
   searchBar: {
     display: "flex",
