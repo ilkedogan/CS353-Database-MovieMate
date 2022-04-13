@@ -24,7 +24,7 @@ export default function LoginRegisterTextField(props){
     return <FormControl sx={{ m: 1, borderRadius:'10px', width: '24vw',background:Constants.MOVIEMATE_TEXTFIELD }} variant="filled" >
     <InputLabel htmlFor="filled-adornment-password" style={{color:Constants.WHITE}}>{props.label}</InputLabel>
     <FilledInput
-    
+    autoComplete='off'
       type={!props.isPassword ? "email" : visible ? 'text' : 'password'}
       style={{color:Constants.WHITE, paddingLeft:20,paddingRight:20}}
       value={value}
