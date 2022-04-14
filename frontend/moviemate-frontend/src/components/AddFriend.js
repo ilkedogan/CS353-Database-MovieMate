@@ -3,7 +3,13 @@ import Dialog from "@mui/material/Dialog"
 import LoginRegisterTextField from "./LoginRegisterTextField";
 import Constants from "../utils/Constants";
 
-export default function AdvancedSearch(props) {
+/**
+ * İlke Doğan
+ * 13.04.2022
+ * Add a Friend Card
+ */
+
+export default function AddFriend(props) {
     return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
         <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
             <Grid container>
