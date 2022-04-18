@@ -12,37 +12,40 @@ import React from "react";
 
 const MovieCard = () => {
 
-    return(
+    return (
         <div>
 
-            <Grid 
+            <Grid
                 container
-                sx = {{
-                    bgcolor:  Constants.MOVIEMATE_BLUE,
-                    height: 300, 
-                    width: '40%',
+                sx={{
+                    bgcolor: Constants.MOVIEMATE_BLUE,
+                    height: 300,
+                    borderRadius: Constants.BORDER_RADIUS,
+                    width: "80%",
+                    marginTop: 10,
+                    marginLeft: 10,
+                }}>
+
+                <Grid item xs={4} sx={{
+                    bgcolor: Constants.MOVIEMATE_GREEN,
+                    heigth: 300,
                     borderRadius: Constants.BORDER_RADIUS,
                 }}>
-                
-                <Grid 
-                    item xs={4}
-                    sx = {{
-                        bgcolor: Constants.MOVIEMATE_GREEN,
-                        heigth: 300,
-                        borderRadius: Constants.BORDER_RADIUS,
-                    }}>
-
+                  {/* <img
+                        src={Spiderman}
+                        style={{ width: "100vh", height: "100vh" }}
+                    />   */}
                 </Grid>
 
                 <Grid
-                    item xs = {8}
-                    sx = {{
+                    item xs={8}
+                    sx={{
                         height: 300,
                         borderRadius: Constants.BORDER_RADIUS,
                     }}>
 
                     <Grid container
-                        style = {{
+                        style={{
                             display: "flex",
                             flexWrap: "wrap",
                             alignContent: "center",
@@ -50,11 +53,11 @@ const MovieCard = () => {
                             paddingBottom: 20,
                             paddingLeft: 15,
                             paddingRight: 15,
-                            
+
                         }}>
                         <Grid
                             item xs={12}
-                            sx = {{
+                            sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
                                 fontSize: "48px",
@@ -66,7 +69,7 @@ const MovieCard = () => {
 
                         <Grid
                             item xs={12}
-                            sx = {{
+                            sx={{
                                 color: Constants.MOVIEMATE_GREEN,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
                                 fontSize: "24px",
@@ -77,9 +80,9 @@ const MovieCard = () => {
 
                         </Grid>
                     </Grid>
-                    
+
                     <Grid container
-                        style = {{
+                        style={{
                             display: "flex",
                             flexWrap: "wrap",
                             alignContent: "flex-end",
@@ -88,10 +91,10 @@ const MovieCard = () => {
                             paddingRight: 15,
                             paddingBottom: 15,
                         }}>
-                        
-                        <Grid 
-                            item xs = {6}
-                            sx = {{
+
+                        <Grid
+                            item xs={6}
+                            sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
                                 fontSize: "24px",
@@ -100,17 +103,17 @@ const MovieCard = () => {
                             }}>
                             Action Fantastic
                         </Grid>
-                        <Grid 
-                            item xs = {6}
-                            sx = {{
+                        <Grid
+                            item xs={6}
+                            sx={{
                                 color: Constants.MOVIEMATE_RED,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
                                 fontSize: "36px",
                                 textAlign: "right",
                                 fontWeight: 500,
                             }}
-                            >
-                            
+                        >
+
                             3.66$
                         </Grid>
                     </Grid>

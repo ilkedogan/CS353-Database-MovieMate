@@ -4,6 +4,7 @@ import { MockData } from "../MockData";
 import { useState } from "react";
 import { useStyles } from "../utils/AppStyles.js";
 import MovieNavbar from "../components/MovieNavbar";
+import MovieCards from "../components/MovieCard";
 
 export default function MainScreen() {
 
@@ -13,18 +14,19 @@ export default function MainScreen() {
         <Grid container direction={"column"} className={classes.bg}>
             <Grid item xs={2}>
                 <div>
-                    <MovieNavbar/>
+                    <MovieNavbar />
                 </div>
             </Grid>
             <Grid item xs={5}>
                 <div>
-
+                    <MovieCards />
                 </div>
             </Grid>
-            <Grid item xs={5} style={{ minHeight: "40vh" }}>
+            <Grid item xs={5}>
                 <div>
+                    <MovieCards />
                 </div>
             </Grid>
         </Grid>
-    </div>
+    </div >
 }
