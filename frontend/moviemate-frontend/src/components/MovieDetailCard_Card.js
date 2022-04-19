@@ -10,7 +10,7 @@ import React from "react";
  * MovieCard 
  */
 
-const MovieCard = () => {
+const MovieDetailCard_Card = () => {
 
     return (
         <div>
@@ -18,16 +18,15 @@ const MovieCard = () => {
             <Grid
                 container
                 sx={{
-                    bgcolor: Constants.MOVIEMATE_BLUE,
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
                     width: "40%",
-                    marginTop: 10,
-                    marginLeft: 10,
+                    paddingTop: 10,
+                    paddingLeft: 10,
                 }}>
 
                 <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
+                    bgcolor: "transparent",
                     heigth: 300,
                     borderRadius: Constants.BORDER_RADIUS,
                 }}>
@@ -50,9 +49,6 @@ const MovieCard = () => {
                             flexWrap: "wrap",
                             alignContent: "center",
                             height: 250,
-                            paddingBottom: 20,
-                            paddingLeft: 15,
-                            paddingRight: 15,
 
                         }}>
                         <Grid
@@ -124,4 +120,4 @@ const MovieCard = () => {
 
 };
 
-export default MovieCard;
+export default MovieDetailCard_Card;

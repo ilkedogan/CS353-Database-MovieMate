@@ -4,29 +4,17 @@ import { MockData } from "../MockData";
 import { useState } from "react";
 import { useStyles } from "../utils/AppStyles.js";
 import MovieNavbar from "../components/MovieNavbar";
-import MovieCards from "../components/MovieCard";
+import MovieCards from "../components/MovieCards";
+import Constants from "../utils/Constants";
 
 export default function MainScreen() {
 
     const [isLogged, setIsLogged] = useState(false);
     const classes = useStyles();
-    return <div>
-        <Grid container direction={"column"} className={classes.bg}>
-            <Grid item xs={2}>
-                <div>
-                    <MovieNavbar />
-                </div>
-            </Grid>
-            <Grid item xs={5}>
-                <div>
-                    <MovieCards />
-                </div>
-            </Grid>
-            <Grid item xs={5}>
-                <div>
-                    <MovieCards />
-                </div>
-            </Grid>
-        </Grid>
+    return <div style={{   background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
+        <MovieNavbar />
+
+        <Grid > <MovieCards /> </Grid>
+        
     </div >
 }

@@ -1,27 +1,22 @@
 import Grid from "@mui/material/Grid";
-import MovieCard from "../components/MovieCard";
+import MovieCardMain from "./movieCardMain";
+import Constants from "../utils/Constants";
 
 const MovieCards = () => {
 
     return (
         <div>
-            <Grid container direction={"column"} className={classes.bg}>
+            <Grid container >
                 <Grid item xs={6} >
                     <div>
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
+                        <MovieCardMain />
+                        <MovieCardMain />
                     </div>
                 </Grid>
                 <Grid item xs={6}>
                     <div>
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
-                        <MovieCard />
+                        <MovieCardMain />
+                        <MovieCardMain />
                     </div>
                 </Grid>
             </Grid>

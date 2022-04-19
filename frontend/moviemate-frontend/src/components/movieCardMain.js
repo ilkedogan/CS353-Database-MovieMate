@@ -5,23 +5,22 @@ import axios from "axios";
 import React from "react";
 
 /**
- * Metehan Sacakci
+ * Metehan Sacakci & Ilke Dogan
  * 06.03.2022
- * MovieCard 
+ * MovieCard For Main 
  */
 
-const MovieCard = () => {
+const MovieCardMain = () => {
 
     return (
         <div>
-
             <Grid
                 container
                 sx={{
                     bgcolor: Constants.MOVIEMATE_BLUE,
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "40%",
+                    width: "80%",
                     marginTop: 10,
                     marginLeft: 10,
                 }}>
@@ -113,15 +112,15 @@ const MovieCard = () => {
                                 fontWeight: 500,
                             }}
                         >
+
                             3.66$
                         </Grid>
                     </Grid>
                 </Grid>
-
             </Grid>
         </div>
     );
 
 };
 
-export default MovieCard;
+export default MovieCardMain;
