@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Constants from "../utils/Constants";
-import MovieDetailCard_Card from "./MovieDetailCard_Card";
+import MovieDetailCardDetail from "./MovieDetailCardDetail";
 
 const MovieCards = () => {
 
@@ -10,7 +10,7 @@ const MovieCards = () => {
                 <Grid item xs={6} >
                     <Grid container direction={"row"} >
                         <Grid item xs={6}>
-                            <MovieDetailCard_Card />
+                            <MovieDetailCardDetail />
                         </Grid>
                         <Grid item xs={6} style={{
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,

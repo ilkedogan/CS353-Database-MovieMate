@@ -1,7 +1,5 @@
 import Constants from "../utils/Constants";
 import Grid from "@mui/material/Grid";
-import { fontSize } from "@mui/system";
-import axios from "axios";
 import React from "react";
 
 /**
@@ -10,7 +8,7 @@ import React from "react";
  * MovieCard 
  */
 
-const MovieDetailCard_Card = () => {
+const MovieDetailCardDetail = () => {
 
     return (
         <div>
@@ -120,4 +118,4 @@ const MovieDetailCard_Card = () => {
 
 };
 
-export default MovieDetailCard_Card;
+export default MovieDetailCardDetail;
