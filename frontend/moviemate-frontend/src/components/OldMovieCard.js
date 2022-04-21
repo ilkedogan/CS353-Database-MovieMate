@@ -22,8 +22,8 @@ const OldMovieCard = () => {
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
                     width: "80%",
-                    marginTop: 10,
-                    marginLeft: 10,
+                    marginTop: 5,
+                    marginLeft: 5,
                 }}>
 
                 <Grid item xs={4} sx={{

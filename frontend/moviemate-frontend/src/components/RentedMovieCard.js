@@ -21,9 +21,9 @@ const RentedMovieCard = () => {
                     bgcolor: Constants.MOVIEMATE_BLUE,
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "50%",
-                    marginTop: 10,
-                    marginLeft: 10,
+                    width: "80%",
+                    marginTop: 5,
+                    marginLeft: 5,
                 }}>
 
                 <Grid item xs={4} sx={{
@@ -55,6 +55,7 @@ const RentedMovieCard = () => {
                             paddingBottom: 20,
                             paddingLeft: 15,
                             paddingRight: 15,
+                            
 
                         }}>
                         <Grid
