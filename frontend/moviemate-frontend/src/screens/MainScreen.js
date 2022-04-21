@@ -9,12 +9,12 @@ import Constants from "../utils/Constants";
 
 export default function MainScreen() {
 
-    const [isLogged, setIsLogged] = useState(false);
+    const [ isLogged, setIsLogged ] = useState( false );
     const classes = useStyles();
-    return <div style={{   background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
-        <MovieNavbar />
+    return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
+        <MovieNavbar/>
 
-        <Grid > <MovieCards /> </Grid>
-        
-    </div >
+        <Grid> <MovieCards/> </Grid>
+
+    </div>
 }

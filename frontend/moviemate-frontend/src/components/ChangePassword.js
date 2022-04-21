@@ -8,7 +8,7 @@ import Constants from "../utils/Constants";
  * 13.04.2022
  * change Password card
  */
-export default function changePassword(props) {
+export default function ChangePassword( props) {
     return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
         <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
             <Grid container>

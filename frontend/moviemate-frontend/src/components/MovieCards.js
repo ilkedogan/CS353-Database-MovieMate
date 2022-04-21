@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import MovieCardMain from "./movieCardMain";
+import MovieCardMain from "./MovieCardMain";
 import Constants from "../utils/Constants";
 
 const MovieCards = () => {
