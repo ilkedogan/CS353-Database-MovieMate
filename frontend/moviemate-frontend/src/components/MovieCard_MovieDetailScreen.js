@@ -3,31 +3,29 @@ import Grid from "@mui/material/Grid";
 import { fontSize } from "@mui/system";
 import axios from "axios";
 import React from "react";
+import { Margin } from "@mui/icons-material";
 
 /**
  * Metehan Sacakci
- * 06.03.2022
- * MovieCard 
+ * 24.04.2022
+ * MovieCard_MovieDetailScreen
  */
 
-const MovieCard = () => {
+const MovieCard_MovieDetailScreen = () => {
 
     return (
         <div>
             <Grid
                 container
                 sx={{
-                    bgcolor: Constants.MOVIEMATE_BLUE,
-                    height: 300,
+                    height: 280,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "40%",
-                    marginTop: 10,
-                    marginLeft: 10,
+                    width: "100%",
                 }}>
 
                 <Grid item xs={4} sx={{
                     bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
+                    heigth: 280,
                     borderRadius: Constants.BORDER_RADIUS,
                 }}>
                   {/* <img
@@ -39,7 +37,7 @@ const MovieCard = () => {
                 <Grid
                     item xs={8}
                     sx={{
-                        height: 300,
+                        height: 280,
                         borderRadius: Constants.BORDER_RADIUS,
                     }}>
 
@@ -48,7 +46,7 @@ const MovieCard = () => {
                             display: "flex",
                             flexWrap: "wrap",
                             alignContent: "center",
-                            height: 250,
+                            height: 233,
                             paddingBottom: 20,
                             paddingLeft: 15,
                             paddingRight: 15,
@@ -59,9 +57,10 @@ const MovieCard = () => {
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "48px",
+                                fontSize: "42px",
                                 textAlign: "left",
                                 fontWeight: 500,
+                                marginTop: "50px",
                             }}>
                             Spider-Man No Way Home
                         </Grid>
@@ -71,48 +70,49 @@ const MovieCard = () => {
                             sx={{
                                 color: Constants.MOVIEMATE_GREEN,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "24px",
+                                fontSize: "22px",
                                 textAlign: "left",
-                                fontWeight: 300
+                                fontWeight: 300,
+                                marginTop: "10px",
                             }}>
                             2021
 
                         </Grid>
-                    </Grid>
-
-                    <Grid container
-                        style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            alignContent: "flex-end",
-                            alignItems: "center",
-                            paddingLeft: 15,
-                            paddingRight: 15,
-                            paddingBottom: 15,
-                        }}>
-
                         <Grid
-                            item xs={6}
+                            item xs={12}
+                            sx={{
+                                color: Constants.MOVIEMATE_GREEN,
+                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                fontSize: "22px",
+                                textAlign: "left",
+                                fontWeight: 300,
+                                marginTop: "10px"
+                            }}>
+                            4/5
+
+                        </Grid>
+                        <Grid
+                            item xs={12}
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "24px",
+                                fontSize: "22px",
+                                textAlign: "left",
+                                fontWeight: 300,
+                                marginTop: "20px",
+                            }}>
+                            Directed By: Jon Watts
+                        </Grid>
+                        <Grid
+                            item xs={12}
+                            sx={{
+                                color: Constants.WHITE,
+                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                fontSize: "22px",
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
                             Action Fantastic
-                        </Grid>
-                        <Grid
-                            item xs={6}
-                            sx={{
-                                color: Constants.MOVIEMATE_RED,
-                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "36px",
-                                textAlign: "right",
-                                fontWeight: 500,
-                            }}
-                        >
-                            3.66$
                         </Grid>
                     </Grid>
                 </Grid>
@@ -123,4 +123,4 @@ const MovieCard = () => {
 
 };
 
-export default MovieCard;
+export default MovieCard_MovieDetailScreen;
