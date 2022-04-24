@@ -15,10 +15,12 @@ export default function SettingScreen( props ) {
                             paddingTop: 20,
                             fontSize: 20, backgroundColor: "red",
                             width: "150vh",
-                            background: Constants.MOVIEMATE_GREY, opacity: "0.7",
+                            background: Constants.MOVIEMATE_GREY,
+                            opacity: "0.7",
                             color: Constants.WHITE,
                             font: Constants.ROKKIT_FONT_FAMILY,
-                            justifyContent: "left"
+                            justifyContent: "left",
+                            borderRadius: "12px",
                         }} onClick={() => {
                             props.onOpen(false)
                         }}>
@@ -39,7 +41,8 @@ export default function SettingScreen( props ) {
                             opacity: "0.7",
                             color: Constants.WHITE,
                             font: Constants.ROKKIT_FONT_FAMILY,
-                            justifyContent: "left"
+                            justifyContent: "left",
+                            borderRadius: "12px"
                         }} onClick={() => {
                             props.onOpen(false)
                         }}>
@@ -58,9 +61,11 @@ export default function SettingScreen( props ) {
                                 backgroundColor: "red",
                                 width: "150vh",
                                 background: Constants.MOVIEMATE_GREY,
-                                opacity: "0.7", color: Constants.WHITE,
+                                opacity: "0.7", 
+                                color: Constants.WHITE,
                                 font: Constants.ROKKIT_FONT_FAMILY,
-                                justifyContent: "left"
+                                justifyContent: "left",
+                                borderRadius: "12px",
                             }}
                             onClick={() => {
                                 props.onOpen(false)
@@ -83,7 +88,8 @@ export default function SettingScreen( props ) {
                                 opacity: "0.7",
                                 color: Constants.WHITE,
                                 font: Constants.ROKKIT_FONT_FAMILY,
-                                justifyContent: "left"
+                                justifyContent: "left",
+                                borderRadius: "12px",
                             }}
                             onClick={() => {
                                 props.onOpen(false)
@@ -103,9 +109,11 @@ export default function SettingScreen( props ) {
                                 backgroundColor: "red",
                                 width: "150vh",
                                 background: Constants.MOVIEMATE_GREY,
-                                opacity: "0.7", color: Constants.WHITE,
+                                opacity: "0.7", 
+                                color: Constants.WHITE,
                                 font: Constants.ROKKIT_FONT_FAMILY,
                                 justifyContent: "left",
+                                borderRadius: "12px",
                             }} onClick={() => {
                                 props.onOpen(false)
                             }}>
