@@ -69,52 +69,168 @@ public class DatabaseConnection {
         return instance;
     }
 
-
     public static Boolean createTables () {
         try {
             Statement statement;
-            statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.userTable );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.adminTable );
+            statement.executeUpdate( TableStrings.adminTable );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.employeeTable );
+            statement.executeUpdate( TableStrings.employeeTable );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.customerTable );
+            statement.executeUpdate( TableStrings.customerTable );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.wallet );
+            statement.executeUpdate( TableStrings.wallet );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.membershipType );
+            statement.executeUpdate( TableStrings.membershipType );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.actor );
+            statement.executeUpdate( TableStrings.actor );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.genre );
+            statement.executeUpdate( TableStrings.genre );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.director );
+            statement.executeUpdate( TableStrings.director );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.movie );
+            statement.executeUpdate( TableStrings.movie );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.customerOrder );
+            statement.executeUpdate( TableStrings.customerOrder );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.searchHistory );
+            statement.executeUpdate( TableStrings.searchHistory );
 
             statement = getInstance().connection.createStatement();
-            //statement.executeUpdate( TableStrings.requestedMovies );
+            statement.executeUpdate( TableStrings.requestedMovies );
 
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.addEmployee );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.banCustomer );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.deleteCustomer );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.addFriend );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.hasOrder );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.recommend );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.review );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.rate );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.addWatchlist );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.acts );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.hasGenre );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.directs );
 
             return true;
         } catch ( Exception e ) {
+            System.out.println( e.getMessage() );
+            return false;
+        }
+    }
+
+    public static boolean dropTables(){
+        try {
+
+            Statement statement;
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Directs" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Has_Genre" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Acts" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Add_Watch_List" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Rate" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Review" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Recommend" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Has_Order" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Add_Friend" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Delete_Customer" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Ban_Customer" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Add_Employee" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Requested_Movies" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Search_History" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Customer_Order" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Movie" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Director" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Genre" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Actor" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Membership_Type" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Wallet" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Customer" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Employee" );
+
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( "DROP TABLE IF EXISTS Admin" );
+
+            return true;
+        }catch ( Exception e ){
             System.out.println( e.getMessage() );
             return false;
         }
