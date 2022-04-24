@@ -57,11 +57,6 @@ export default function ProfileScreen() {
 
     return ( <div>
         <Grid container direction={ "column" } className={ classes.bg }>
-            <Grid item xs={ 2 }>
-                <div>
-                    <MovieNavbar/>
-                </div>
-            </Grid>
             <Grid item xs={ 2 } sx={ { paddingTop: 16, alignItems: 'center' } }>
                 <Container
                     sx={ {

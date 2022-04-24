@@ -6,11 +6,11 @@ import MainScreen from './screens/MainScreen';
 import ProfileScreen from "./screens/profileScreens/ProfileScreen";
 
 function App() {
-  return (
-    <div className="App">
-      <ProfileScreen/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <MainScreen/>
+        </div>
+    );
 }
 
 export default App;

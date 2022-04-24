@@ -24,54 +24,63 @@ import { useStyles } from "../utils/AppStyles.js";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { fontWeight } from "@mui/system";
 
-const MovieNavbar = ({
-    setCurrentScreen,
-}) => {
-    const classes = useStyles();
-    const [inputText, setInputText] = useState("");
-    let inputHandler = (e) => {
+export default function MovieNavbarUser( props ) {
+
+    const [ inputText, setInputText ] = useState( "" );
+
+    let inputHandler = ( e ) => {
         //convert input text to lower case
-        var lowerCase = e.target.value.toLowerCase();
-        setInputText(lowerCase);
+        let lowerCase = e.target.value.toLowerCase();
+        setInputText( lowerCase );
     };
 
     return (
-        <div className={classes.navbar}>
+        <div>
             <Grid container>
-                <Grid item xs={3} stye={{
+                <Grid item xs={ 3 } stye={ {
                     alignItems: "center",
                     cursor: "pointer"
 
-                }}>
-                    <Typography style={
-                        {
-                            alignItems: "center",
-                            fontSize: "32px",
-                            marginLeft: "10px",
-                            paddingTop: "16px",
-                            width: "200px",
-                            color: Constants.WHITE,
-                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                            fontWeight: "600"
-                        }}>
-                        MovieMate</Typography>
+                } }>
+                    <div onClick={ () => {
+                        props.setCurrentPage( 0 )
+                    } }>
+                        <Typography style={
+                            {
+                                alignItems: "center",
+                                fontSize: "32px",
+                                cursor: "pointer",
+                                marginLeft: "10px",
+                                paddingTop: "16px",
+                                width: "200px",
+                                color: props.currentPage === 0 ? Constants.MOVIEMATE_GREEN : Constants.WHITE,
+                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                fontWeight: "600"
+                            } }>
+                            MovieMate</Typography>
+                    </div>
                 </Grid>
-                <Grid item xs={3} style={{ alignItems: "center", alignContent: "center" }}>
-                    <FormControl sx={{ m: 1, borderRadius: '10px', width: '24vw', background: Constants.WHITE, }} variant="filled" >
+                <Grid item xs={ 3 } style={ { alignItems: "center", alignContent: "center" } }>
+                    <FormControl sx={ { m: 1, borderRadius: '10px', width: '24vw', background: Constants.WHITE, } }
+                                 variant="filled">
                         <InputLabel
-                            style={{
+                            style={ {
                                 color: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
                                 fontWeight: "bold",
-                            }}>
-                            {"Search Movie"}
+                            } }>
+                            { "Search Movie" }
                         </InputLabel>
                         <FilledInput
-                            type={'text'}
-                            style={{ color: Constants.MOVIEMATE_NAVBAR_BACKGROUND, paddingLeft: 20, paddingRight: 20 }}
+                            type={ 'text' }
+                            style={ {
+                                color: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
+                                paddingLeft: 20,
+                                paddingRight: 20
+                            } }
                             endAdornment={
-                                <InputAdornment style={{ color: Constants.MOVIEMATE_BLUE }} position="end">
+                                <InputAdornment style={ { color: Constants.MOVIEMATE_BLUE } } position="end">
                                     <IconButton edge="end">
-                                        {<SearchIcon style={{ color: Constants.MOVIEMATE_BLUE }} />}
+                                        { <SearchIcon style={ { color: Constants.MOVIEMATE_BLUE } }/> }
                                     </IconButton>
                                 </InputAdornment>
                             }
@@ -79,22 +88,27 @@ const MovieNavbar = ({
                     </FormControl>
 
                 </Grid>
-                <Grid item xs={6} style={{
+                <Grid item xs={ 6 } style={ {
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
                     paddingRight: "24px",
-                }}>
+                } }>
 
-                    <Typography style={{
-                        fontSize: "28px",
-                        color: Constants.WHITE,
-                        textDecoration: 'none',
-                        cursor: "pointer",
-                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                        fontWeight: "300"
-                    }}>
-                        Cart </Typography>
+                    <div onClick={ () => {
+                        props.setCurrentPage( 1 )
+
+                    } }>
+                        <Typography style={ {
+                            fontSize: "28px",
+                            color: props.currentPage === 1 ? Constants.MOVIEMATE_GREEN : Constants.WHITE,
+                            textDecoration: 'none',
+                            cursor: "pointer",
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                            fontWeight: "300"
+                        } }>
+                            Cart </Typography>
+                    </div>
                     <div style={
                         {
                             fontSize: "28px",
@@ -102,17 +116,23 @@ const MovieNavbar = ({
                             color: Constants.WHITE,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
 
-                        }}>
-                        | </div>
-                    <Typography style={{
-                        fontSize: "28px",
-                        color: Constants.WHITE,
-                        textDecoration: 'none',
-                        cursor: "pointer",
-                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                        fontWeight: "300"
-                    }}>
-                        Profile </Typography>
+                        } }>
+                        |
+                    </div>
+                    <div onClick={ () => {
+                        props.setCurrentPage( 2 )
+                    } }>
+                        <Typography
+                            style={ {
+                                fontSize: "28px",
+                                color: props.currentPage === 2 ? Constants.MOVIEMATE_GREEN : Constants.WHITE,
+                                textDecoration: 'none',
+                                cursor: "pointer",
+                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                fontWeight: "300"
+                            } }>
+                            Profile </Typography>
+                    </div>
                     <div style={
                         {
                             fontSize: "28px",
@@ -120,17 +140,23 @@ const MovieNavbar = ({
                             color: Constants.WHITE,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
 
-                        }}>
-                        | </div>
-                    <Typography style={{
-                        fontSize: "28px",
-                        color: Constants.WHITE,
-                        textDecoration: 'none',
-                        cursor: "pointer",
-                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                        fontWeight: "300"
-                    }}>
-                        Settings </Typography>
+                        } }>
+                        |
+                    </div>
+                    <div onClick={ () => {
+                        props.setCurrentPage( 3 )
+
+                    } }>
+                        <Typography style={ {
+                            fontSize: "28px",
+                            color: props.currentPage === 3 ? Constants.MOVIEMATE_GREEN : Constants.WHITE,
+                            textDecoration: 'none',
+                            cursor: "pointer",
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                            fontWeight: "300"
+                        } }>
+                            Settings </Typography>
+                    </div>
                     <div style={
                         {
                             fontSize: "28px",
@@ -138,23 +164,27 @@ const MovieNavbar = ({
                             color: Constants.WHITE,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
 
-                        }}>
-                        | </div>
-                    <Typography style={{
-                        fontSize: "28px",
-                        color: Constants.WHITE,
-                        textDecoration: 'none',
-                        cursor: "pointer",
-                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                        fontWeight: "300"
-                    }}>
-                        Logout </Typography>
+                        } }>
+                        |
+                    </div>
+                    <div onClick={ () => {
+                        props.logout()
+                    } }>
+                        <Typography style={ {
+                            fontSize: "28px",
+                            color: Constants.WHITE,
+                            textDecoration: 'none',
+                            cursor: "pointer",
+                            fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                            fontWeight: "300"
+                        } }>
+                            Logout </Typography>
+                    </div>
 
                 </Grid>
             </Grid>
-        </div >
+        </div>
     );
-};
+}
 
 
-export default MovieNavbar;
