@@ -7,7 +7,8 @@ class Constants  {
     static MOVIEMATE_GREEN = "#419f8c";
     static MOVIEMATE_BLUE = "rgba(99, 134, 158, 0.4)";
     static MOVIEMATE_BACKGROUND = "#161621";
-    static MOVIEMATE_NAVBAR_BACKGROUND = "#252525";    
+    static MOVIEMATE_NAVBAR_BACKGROUND = "#252525"; 
+    static MOVIEMATE_GREY = "#455e6d";
 
 }
 

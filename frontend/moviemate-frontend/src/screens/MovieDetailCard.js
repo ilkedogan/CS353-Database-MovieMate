@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Constants from "../utils/Constants";
-import MovieDetailCardDetail from "./MovieDetailCardDetail";
+import MovieDetailCardDetail from "../components/MovieDetailCardDetail";
 
 const MovieCards = () => {
 
