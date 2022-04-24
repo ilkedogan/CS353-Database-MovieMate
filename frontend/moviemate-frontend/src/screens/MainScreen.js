@@ -22,7 +22,7 @@ export default function MainScreen() {
 
     const classes = useStyles();
     return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
-        { !loggedIn ?
+        { loggedIn ?
             <MovieNavbarUser currentPage={ currentPage } setCurrentPage={ ( val ) => setCurrentPage( val ) }
                              logout={ () => {
                                  setLoggedIn( false )
