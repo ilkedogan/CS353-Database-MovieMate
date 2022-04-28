@@ -57,7 +57,7 @@ export default function ProfileScreen() {
 
     return ( <div>
         <Grid container direction={ "column" } className={ classes.bg }>
-            <Grid item xs={ 2 } sx={ { paddingTop: 16, alignItems: 'center' } }>
+            <Grid item xs={ 2 } sx={ { paddingTop: 10, alignItems: 'center' } }>
                 <Container
                     sx={ {
                         bgcolor: Constants.MOVIEMATE_GREEN,
@@ -80,7 +80,7 @@ export default function ProfileScreen() {
             } }> Metehan Saçakçı
             </Grid>
 
-            <Grid item xs={ 6 } sx={ { alignItems: 'center', paddingTop: 1 } }>
+            <Grid item xs={ 6 } sx={ { alignItems: 'center', paddingTop: 2 } }>
                 <Grid container xs={ 12 } sx={ { alignItems: 'center', justifyContent:"center",display:"flex" } }>
                     <Box sx={ {
                         width: '60%',
