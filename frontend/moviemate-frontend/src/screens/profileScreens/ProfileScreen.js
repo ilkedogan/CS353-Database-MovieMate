@@ -81,27 +81,28 @@ export default function ProfileScreen() {
             </Grid>
 
             <Grid item xs={ 6 } sx={ { alignItems: 'center', paddingTop: 1 } }>
-                <Grid container xs={ 12 } sx={ { alignItems: 'center', justifyContent:"center",display:"flex", paddingTop: 2 } }>
+                <Grid container xs={ 12 } sx={ { alignItems: 'center', justifyContent:"center",display:"flex" } }>
                     <Box sx={ {
-                        width: '40%',
+                        width: '60%',
                         height: 64,
                         bgcolor: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
+                        justifyContent:"center",display:"flex",
                         alignItems: 'center',
-                        borderRadius: 3
+                        borderRadius: 3,
                     } }>
                         <StyledTabs
                             value={ tabIndex }
                             onChange={ ( event, index ) => {
                                 setTabIndex( index )
                             } }
-                            sx={ { alignItems: 'center', paddingLeft: 3 } }
+                            sx={ { alignItems: 'center', justifyContent:"center", display:"flex",} }
                         >
                             <StyledTab value={0} label={ "Rented Movies" }/>
                             <StyledTab value={1} label={ "Old Movies" }/>
                             <StyledTab value={2} label={ "Ratings" }/>
                             <StyledTab value={3} label={ "Reviews" }/>
                             <StyledTab value={4} label={ "Friends" }/>
-                            <StyledTab value={5} label={ "Calender" }/>
+                            <StyledTab value={5} label={ "Calendar" }/>
                         </StyledTabs>
                     </Box>
                 </Grid>
