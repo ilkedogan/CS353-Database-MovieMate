@@ -13,11 +13,11 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping( "/user" )
-public class UserController {
+@RequestMapping( "/customer" )
+public class CustomerController {
 
 
-    @GetMapping
+    @GetMapping // http://localhost:8080/customer?email=hacicakin2027@gmail.com
     public SelectUser selectUser ( @RequestParam( value = "email" ) String email ) {
 
         try {
@@ -41,7 +41,7 @@ public class UserController {
         }
     }
 
-    @PostMapping
+    @PostMapping // http://localhost:8080/customer?email=hacicakin2021@gmail.com&password=123456&name=Hacı&surname=Çakın
     public Boolean insertUser ( @RequestParam( value = "email" ) String email ,
                                 @RequestParam( value = "password" ) String password ,
                                 @RequestParam( value = "name" ) String name ,
