@@ -20,7 +20,7 @@ const MovieCard = () => {
                     bgcolor: Constants.MOVIEMATE_BLUE,
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "40%",
+                    width: "80%",
                     marginTop: 10,
                     marginLeft: 10,
                 }}>

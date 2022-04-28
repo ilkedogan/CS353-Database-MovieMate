@@ -89,11 +89,10 @@ const OldMovieCard = () => {
                             alignItems: "center",
                             paddingLeft: 15,
                             paddingRight: 15,
-                            paddingBottom: 15,
                         }}>
 
                         <Grid
-                            item xs={6}
+                            item xs={8}
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
@@ -104,16 +103,16 @@ const OldMovieCard = () => {
                             Action Fantastic
                         </Grid>
                         <Grid
-                            item xs={6}
+                            item xs={4}
                             sx={{
                                 color: Constants.MOVIEMATE_RED,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "36px",
+                                fontSize: "20px",
                                 textAlign: "right",
                                 fontWeight: 500,
+                                paddingRight: 1,
                             }}
                         >
-
                             expired 27.01.2022
                         </Grid>
                     </Grid>
