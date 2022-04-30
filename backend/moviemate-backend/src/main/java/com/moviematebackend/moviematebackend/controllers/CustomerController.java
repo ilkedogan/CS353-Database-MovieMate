@@ -30,7 +30,7 @@ public class CustomerController {
                         resultSet.getString( "password" ) ,
                         resultSet.getString( "account_status" ) );
                 return selectCustomer;
-            }else{
+            } else {
                 throw new UserServiceException( "Data is not found!" );
             }
         } catch ( Exception e ) {
@@ -40,9 +40,9 @@ public class CustomerController {
 
     @PostMapping // http://localhost:8080/customer?email=hacicakin2021@gmail.com&password=123456&name=Hacı&surname=Çakın
     public Boolean insertCustomer ( @RequestParam( value = "email" ) String email ,
-                                @RequestParam( value = "password" ) String password ,
-                                @RequestParam( value = "name" ) String name ,
-                                @RequestParam( value = "surname" ) String surname ) {
+                                    @RequestParam( value = "password" ) String password ,
+                                    @RequestParam( value = "name" ) String name ,
+                                    @RequestParam( value = "surname" ) String surname ) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
 
@@ -61,7 +61,7 @@ public class CustomerController {
 
             return true;
         } catch ( Exception e ) {
-            return false;
+            throw new UserServiceException( e.getMessage() );
         }
     }
 
