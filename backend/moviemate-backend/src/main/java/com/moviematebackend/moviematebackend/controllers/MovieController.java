@@ -47,4 +47,21 @@ public class MovieController {
             throw new UserServiceException( e.getMessage() );
         }
     }
+
+
+
+    @DeleteMapping
+    public Boolean deleteMovie ( @RequestParam( value = "movieId" ) int movieId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "DELETE FROM Movie " +
+                    "WHERE id =" + movieId + " ;";
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
 }

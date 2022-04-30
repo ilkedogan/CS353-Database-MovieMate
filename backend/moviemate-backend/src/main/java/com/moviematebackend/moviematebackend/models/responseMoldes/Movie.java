@@ -1,5 +1,8 @@
 package com.moviematebackend.moviematebackend.models.responseMoldes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Movie {
     private int id;
     private String title;
@@ -9,6 +12,9 @@ public class Movie {
     private double price;
     private String image;
     private int employeeId;
+    private List<Actor> actors;
+    private List<Actor> directors;
+    private List<Genre> genres;
 
     public Movie ( int id , String title , String description , int duration , int productionYear , double price ,
                    String image , int employeeId ) {
@@ -20,6 +26,9 @@ public class Movie {
         this.price = price;
         this.image = image;
         this.employeeId = employeeId;
+        this.actors = new ArrayList<>();
+        this.directors = new ArrayList<>();
+        this.genres = new ArrayList<>();
     }
 
     public int getEmployeeId () {
@@ -84,5 +93,29 @@ public class Movie {
 
     public void setImage ( String image ) {
         this.image = image;
+    }
+
+    public List<Actor> getActors () {
+        return actors;
+    }
+
+    public void setActors ( List<Actor> actors ) {
+        this.actors = actors;
+    }
+
+    public List<Actor> getDirectors () {
+        return directors;
+    }
+
+    public void setDirectors ( List<Actor> directors ) {
+        this.directors = directors;
+    }
+
+    public List<Genre> getGenres () {
+        return genres;
+    }
+
+    public void setGenres ( List<Genre> genres ) {
+        this.genres = genres;
     }
 }
