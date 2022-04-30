@@ -1,7 +1,5 @@
 import Constants from "../utils/Constants";
 import Grid from "@mui/material/Grid";
-import { fontSize } from "@mui/system";
-import axios from "axios";
 import React from "react";
 
 /**

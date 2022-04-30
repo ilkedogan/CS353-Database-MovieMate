@@ -1,10 +1,8 @@
 import Grid from "@mui/material/Grid";
 import Constants from "../utils/Constants";
-import MovieDetailCardDetail from "../components/MovieDetailCardDetail";
 import { Button } from "@mui/material";
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import IconButton from '@mui/material/IconButton';
-import MovieCard from "../components/MovieCard";
 import MovieCard_MovieDetailScreen from "../components/MovieCard_MovieDetailScreen";
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
