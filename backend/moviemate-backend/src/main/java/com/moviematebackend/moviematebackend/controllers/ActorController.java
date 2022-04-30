@@ -14,7 +14,7 @@ import java.util.Date;
 public class ActorController {  // http://localhost:8080/actor
 
     @PostMapping  // http://localhost:8080/actor?name=hacı&surname=çakın
-    public Actor createActor ( @RequestParam( value = "name" ) String name ,
+    public Actor insertActor ( @RequestParam( value = "name" ) String name ,
                                @RequestParam( value = "surname" ) String surname ,
                                @RequestParam( value = "birth" ) String birth ) {
         Actor actor;
