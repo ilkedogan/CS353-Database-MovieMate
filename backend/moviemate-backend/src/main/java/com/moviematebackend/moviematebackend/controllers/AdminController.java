@@ -1,7 +1,7 @@
 package com.moviematebackend.moviematebackend.controllers;
 
 import com.moviematebackend.moviematebackend.exception.UserServiceException;
-import com.moviematebackend.moviematebackend.models.responseMoldes.SelectAdmin;
+import com.moviematebackend.moviematebackend.models.responseMoldes.Admin;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,20 +35,20 @@ public class AdminController {
      */
 
     @GetMapping // http://localhost:8080/admin?email=adminasli@gmail.com
-    public SelectAdmin selectAdmin ( @RequestParam( value = "email" ) String email ) {
+    public Admin selectAdmin ( @RequestParam( value = "email" ) String email ) {
 
         try {
             String query = "SELECT * FROM Admin WHERE email = '" + email + "'";
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery( query );
-            SelectAdmin selectAdmin;
+            Admin admin;
             if ( resultSet.next() ) {
-                selectAdmin = new SelectAdmin( resultSet.getInt( "admin_id" ) ,
+                admin = new Admin( resultSet.getInt( "admin_id" ) ,
                         resultSet.getString( "first_name" ) ,
                         resultSet.getString( "last_name" ) ,
                         resultSet.getString( "email" ) ,
                         resultSet.getString( "password" ) );
-                return selectAdmin;
+                return admin;
             }else{
                 throw new UserServiceException( "Data is not found!" );
             }

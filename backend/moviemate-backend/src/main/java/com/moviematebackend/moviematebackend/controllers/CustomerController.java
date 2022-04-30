@@ -1,7 +1,7 @@
 package com.moviematebackend.moviematebackend.controllers;
 
 import com.moviematebackend.moviematebackend.exception.UserServiceException;
-import com.moviematebackend.moviematebackend.models.responseMoldes.SelectCustomer;
+import com.moviematebackend.moviematebackend.models.responseMoldes.Customer;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,21 +15,21 @@ public class CustomerController {
 
 
     @GetMapping // http://localhost:8080/customer?email=hacicakin2027@gmail.com
-    public SelectCustomer selectCustomer ( @RequestParam( value = "email" ) String email ) {
+    public Customer selectCustomer ( @RequestParam( value = "email" ) String email ) {
 
         try {
             String query = "SELECT * FROM Customer WHERE email = '" + email + "'";
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery( query );
-            SelectCustomer selectCustomer;
+            Customer customer;
             if ( resultSet.next() ) {
-                selectCustomer = new SelectCustomer( resultSet.getInt( "customer_id" ) ,
+                customer = new Customer( resultSet.getInt( "customer_id" ) ,
                         resultSet.getString( "first_name" ) ,
                         resultSet.getString( "last_name" ) ,
                         resultSet.getString( "email" ) ,
                         resultSet.getString( "password" ) ,
                         resultSet.getString( "account_status" ) );
-                return selectCustomer;
+                return customer;
             } else {
                 throw new UserServiceException( "Data is not found!" );
             }

@@ -1,6 +1,6 @@
 package com.moviematebackend.moviematebackend.models.responseMoldes;
 
-public class SelectCustomer {
+public class Customer {
     private int id;
     private String firstName;
     private String lastName;
@@ -8,8 +8,8 @@ public class SelectCustomer {
     private String password;
     private String accountStatus;
 
-    public SelectCustomer ( int id , String firstName , String lastName , String email , String password ,
-                            String accountStatus ) {
+    public Customer ( int id , String firstName , String lastName , String email , String password ,
+                      String accountStatus ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

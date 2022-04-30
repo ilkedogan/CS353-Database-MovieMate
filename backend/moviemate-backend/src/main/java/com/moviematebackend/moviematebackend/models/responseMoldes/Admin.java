@@ -1,13 +1,13 @@
 package com.moviematebackend.moviematebackend.models.responseMoldes;
 
-public class SelectAdmin {
+public class Admin {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public SelectAdmin ( int id , String firstName , String lastName , String email , String password ) {
+    public Admin ( int id , String firstName , String lastName , String email , String password ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
