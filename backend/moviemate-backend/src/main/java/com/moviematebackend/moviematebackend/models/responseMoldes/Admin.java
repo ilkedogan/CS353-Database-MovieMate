@@ -1,21 +1,18 @@
 package com.moviematebackend.moviematebackend.models.responseMoldes;
 
-public class SelectUser {
+public class Admin {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private String accountStatus;
 
-    public SelectUser ( int id , String firstName , String lastName , String email , String password ,
-                        String accountStatus ) {
+    public Admin ( int id , String firstName , String lastName , String email , String password ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.accountStatus = accountStatus;
     }
 
     public int getId () {
@@ -58,11 +55,4 @@ public class SelectUser {
         this.password = password;
     }
 
-    public String getAccountStatus () {
-        return accountStatus;
-    }
-
-    public void setAccountStatus ( String accountStatus ) {
-        this.accountStatus = accountStatus;
-    }
 }
