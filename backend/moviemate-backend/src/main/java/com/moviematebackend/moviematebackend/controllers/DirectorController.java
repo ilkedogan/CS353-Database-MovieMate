@@ -15,9 +15,9 @@ import java.util.Date;
 public class DirectorController {
 
     @PostMapping  // http://localhost:8080/director?name=hacı&surname=çakın
-    public Actor createDirector ( @RequestParam( value = "name" ) String name ,
-                               @RequestParam( value = "surname" ) String surname ,
-                               @RequestParam( value = "birth" ) String birth ) {
+    public Actor insertDirector ( @RequestParam( value = "name" ) String name ,
+                                  @RequestParam( value = "surname" ) String surname ,
+                                  @RequestParam( value = "birth" ) String birth ) {
         Actor director;
         SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd" );
         try {

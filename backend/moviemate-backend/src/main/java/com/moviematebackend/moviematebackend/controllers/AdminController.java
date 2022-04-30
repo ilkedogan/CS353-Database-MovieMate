@@ -79,7 +79,7 @@ public class AdminController {
 
             return true;
         } catch ( Exception e ) {
-            return false;
+            throw new UserServiceException( e.getMessage() );
         }
     }
 

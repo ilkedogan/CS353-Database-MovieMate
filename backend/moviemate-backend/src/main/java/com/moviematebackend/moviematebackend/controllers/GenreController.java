@@ -15,7 +15,7 @@ import java.util.Date;
 public class GenreController {
 
     @PostMapping
-    public Genre createGenre ( @RequestParam( value = "name" ) String name ) {
+    public Genre insertGenre ( @RequestParam( value = "name" ) String name ) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             Genre genre;
