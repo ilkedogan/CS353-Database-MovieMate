@@ -15,7 +15,7 @@ import CommentCard_Removable from "../components/CommentCard_Removable";
 /**
  * Metehan Sacakci
  * 03.05.2022
- * MovieDetailScreen
+ * EditMovieDetail
  */
 
 const EditMovieDetail = () => {
