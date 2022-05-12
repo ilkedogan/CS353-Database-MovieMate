@@ -13,27 +13,6 @@ import java.sql.Statement;
 @RequestMapping( "/admin" )
 public class AdminController {
 
-    /*
-    bir de ilk defa çalıştırıyorken MoviemateBackendApplication class ındaki oluşturma commentini kaldırın.
-    Oluşturunce tekrar commentleyin.
-
-    örnek customer controller da var.
-
-     @GetMapping notation'dan sonra eğer  @GetMapping("/something") yazarsanız root'a eklenir.
-     mesela burda direkt
-
-     @GetMapping kullanırsam bu http://localhost:8080/admin olur
-     @GetMapping("/something") yaparsam  http://localhost:8080/admin/something olur
-
-     çok büyük bir veri almadıkça her şeyi @RequestParam( value = "email" ) String email şeklinde alabilirsiniz. Yine
-      örneği var. Eğer bir şey oluşturuluyorsa response olarak yeni bir java class ı döndürmeniz gerekir. Ama silme
-      veya update gibi bir değişiklik yapıyorsanız, boolean döndürebilirsiniz şimdilik(daha sonra status response
-      eklicem ben).
-
-
-        admin oluşturma silme yapılacak burda
-     */
-
     @GetMapping // http://localhost:8080/admin?email=adminasli@gmail.com
     public Admin selectAdmin ( @RequestParam( value = "email" ) String email ) {
 
@@ -49,7 +28,7 @@ public class AdminController {
                         resultSet.getString( "email" ) ,
                         resultSet.getString( "password" ) );
                 return admin;
-            }else{
+            } else {
                 throw new UserServiceException( "Data is not found!" );
             }
         } catch ( Exception e ) {
@@ -59,9 +38,9 @@ public class AdminController {
 
     @PostMapping // http://localhost:8080/admin?email=adminasli@gmail.com&password=123456&name=Aslı&surname=Dinç
     public Boolean insertAdmin ( @RequestParam( value = "email" ) String email ,
-                                    @RequestParam( value = "password" ) String password ,
-                                    @RequestParam( value = "name" ) String name ,
-                                    @RequestParam( value = "surname" ) String surname ) {
+                                 @RequestParam( value = "password" ) String password ,
+                                 @RequestParam( value = "name" ) String name ,
+                                 @RequestParam( value = "surname" ) String surname ) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
 

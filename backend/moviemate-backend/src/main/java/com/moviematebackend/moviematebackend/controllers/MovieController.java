@@ -1,7 +1,7 @@
 package com.moviematebackend.moviematebackend.controllers;
 
 import com.moviematebackend.moviematebackend.exception.UserServiceException;
-import com.moviematebackend.moviematebackend.models.responseMoldes.Customer;
+import com.moviematebackend.moviematebackend.models.responseMoldes.Actor;
 import com.moviematebackend.moviematebackend.models.responseMoldes.Genre;
 import com.moviematebackend.moviematebackend.models.responseMoldes.Movie;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -66,7 +68,42 @@ public class MovieController {
                         resultSet.getFloat( "price" ) ,
                         resultSet.getString( "image" ) ,
                         resultSet.getInt( "employee_id" ) );
-                // todo to be continue
+
+
+                String actorSelectionQuery = "SELECT * FROM Actor A, Acts AC WHERE AC.movie_id = '" + movieId +
+                        "' and A.id = AC.actor_id ";
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                resultSet = statement.executeQuery( actorSelectionQuery );
+
+                while ( resultSet.next() ) {
+                    Actor actor = new Actor( resultSet.getInt( "id" ) , resultSet.getString( "name" ) ,
+                            resultSet.getString( "surname" ) , resultSet.getDate( "birth_year" ) );
+                    movie.getActors().add( actor );
+                }
+
+                String genreSelectionQuery = "SELECT * FROM Genre G, Has_Genre HG WHERE HG.movie_id = '" + movieId +
+                        "' and HG.genre_id = G.id ";
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                resultSet = statement.executeQuery( genreSelectionQuery );
+
+                while ( resultSet.next() ) {
+                    Genre genre = new Genre( resultSet.getInt( "id" ) , resultSet.getString( "name" ) );
+                    movie.getGenres().add( genre );
+                }
+
+                String directorSelectionQuery =
+                        "SELECT * FROM Director D, Directs DR WHERE DR.movie_id = '" + movieId +
+                                "' and D.id = DR.director_id ";
+
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                resultSet = statement.executeQuery( directorSelectionQuery );
+
+                while ( resultSet.next() ) {
+                    Actor director = new Actor( resultSet.getInt( "id" ) , resultSet.getString( "name" ) ,
+                            resultSet.getString( "surname" ) , resultSet.getDate( "birth_year" ) );
+                    movie.getDirectors().add( director );
+                }
+
                 return movie;
             } else {
                 throw new UserServiceException( "Data is not found!" );
@@ -82,6 +119,103 @@ public class MovieController {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             String statementString = "DELETE FROM Movie " +
                     "WHERE id =" + movieId + " ;";
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @GetMapping( "/home" )
+    public List<Movie> getMovies ( @RequestParam( value = "page" ) int page ) {
+        try {
+            List<Movie> returnList = new ArrayList<>();
+            String query = "SELECT * " +
+                    "FROM Movie " +
+                    "ORDER BY id " +
+                    "LIMIT 10 OFFSET " + ( 10 * ( page - 1 ) );
+
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery( query );
+            Movie movie;
+            while ( resultSet.next() ) {
+                movie = new Movie( resultSet.getInt( "id" ) ,
+                        resultSet.getString( "title" ) ,
+                        resultSet.getString( "description" ) ,
+                        resultSet.getInt( "duration" ) ,
+                        resultSet.getInt( "production_year" ) ,
+                        resultSet.getFloat( "price" ) ,
+                        resultSet.getString( "image" ) ,
+                        resultSet.getInt( "employee_id" ) );
+                returnList.add( movie );
+            }
+
+            return returnList;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @PostMapping( "/genre" )
+    public Boolean addGenreToMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                     @RequestParam( value = "genreId" ) int genreId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "INSERT INTO Has_Genre( `movie_id`, `genre_id` ) " +
+                    "VALUES " +
+                    "(" +
+                    "'" + movieId +
+                    "', '" + genreId +
+                    "' );";
+
+
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @PostMapping( "/actor" )
+    public Boolean addActorToMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                     @RequestParam( value = "actorId" ) int actorId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "INSERT INTO Acts( `movie_id`, `actor_id` ) " +
+                    "VALUES " +
+                    "(" +
+                    "'" + movieId +
+                    "', '" + actorId +
+                    "' );";
+
+
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @PostMapping( "/director" )
+    public Boolean addDirectorToMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                        @RequestParam( value = "directorId" ) int directorId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "INSERT INTO Directs( `movie_id`, `director_id` ) " +
+                    "VALUES " +
+                    "(" +
+                    "'" + movieId +
+                    "', '" + directorId +
+                    "' );";
+
+
             statement.executeUpdate( statementString );
 
             return true;

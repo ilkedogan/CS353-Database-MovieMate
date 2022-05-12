@@ -1,5 +1,8 @@
 package com.moviematebackend.moviematebackend.models.responseMoldes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
     private int id;
     private String firstName;
@@ -7,6 +10,7 @@ public class Customer {
     private String email;
     private String password;
     private String accountStatus;
+    private List<SearchHistory> searchHistory;
 
     public Customer ( int id , String firstName , String lastName , String email , String password ,
                       String accountStatus ) {
@@ -16,6 +20,7 @@ public class Customer {
         this.email = email;
         this.password = password;
         this.accountStatus = accountStatus;
+        this.searchHistory = new ArrayList<>();
     }
 
     public int getId () {
@@ -64,5 +69,14 @@ public class Customer {
 
     public void setAccountStatus ( String accountStatus ) {
         this.accountStatus = accountStatus;
+    }
+
+    public List<SearchHistory> getSearchHistory () {
+        return searchHistory;
+    }
+
+    public void setSearchHistory (
+            List<SearchHistory> searchHistory ) {
+        this.searchHistory = searchHistory;
     }
 }

@@ -16,12 +16,12 @@ public class AbsentMovieController {
 
     @PostMapping  // http://localhost:8080/absentMovie?name=hacı&surname=çakın
     public Boolean insertAbsentMovie ( @RequestParam( value = "title" ) String title ,
-                                           @RequestParam( value = "director" ) String director ,
-                                           @RequestParam( value = "customerId" ) String customerId) {
+                                       @RequestParam( value = "director" ) String director ,
+                                       @RequestParam( value = "customerId" ) String customerId ) {
 
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
-            java.sql.Date date = new java.sql.Date( new Date().getTime());
+            java.sql.Date date = new java.sql.Date( new Date().getTime() );
 
             String statementString = "INSERT INTO Requested_Movies( `movie_name`, `movie_director`, `request_date`, " +
                     "`request_status`, `customer_id` " +
@@ -43,9 +43,26 @@ public class AbsentMovieController {
             throw new UserServiceException( e.getMessage() );
         }
     }
-/*
-    @PostMapping("/changeStatus") // http://localhost:8080/absentMovie/changeStatus?requestId=1
-    public
-*/
+
+    @PostMapping( "/changeStatus" ) // http://localhost:8080/absentMovie/changeStatus?requestId=1
+    public Boolean changeStatus ( @RequestParam( value = "newStatus" ) String newStatus ,
+                                  @RequestParam( value = "id" ) int requestId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+
+
+            String statementString = "UPDATE Requested_Movies " +
+                    "SET request_status = '" + newStatus + "'" +
+                    "WHERE id = '" + requestId + "'";
+
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
 
 }

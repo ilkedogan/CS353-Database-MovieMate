@@ -2,6 +2,7 @@ package com.moviematebackend.moviematebackend.controllers;
 
 import com.moviematebackend.moviematebackend.exception.UserServiceException;
 import com.moviematebackend.moviematebackend.models.responseMoldes.Customer;
+import com.moviematebackend.moviematebackend.models.responseMoldes.SearchHistory;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,17 @@ public class CustomerController {
                         resultSet.getString( "email" ) ,
                         resultSet.getString( "password" ) ,
                         resultSet.getString( "account_status" ) );
+
+                String querySearchHistory = "SELECT * FROM Search_History WHERE customer_id = '" + resultSet.getInt( "customer_id" ) + "'";
+                resultSet = statement.executeQuery( querySearchHistory );
+
+                SearchHistory searchHistory;
+                while ( resultSet.next() ){
+                    searchHistory = new SearchHistory( resultSet.getTimestamp( "search_date" ),
+                            resultSet.getString( "search_type" ), resultSet.getString( "search_keyword" ) );
+                    customer.getSearchHistory().add( searchHistory );
+                }
+
                 return customer;
             } else {
                 throw new UserServiceException( "Data is not found!" );
@@ -65,4 +77,18 @@ public class CustomerController {
         }
     }
 
+    @DeleteMapping
+    public Boolean deleteCustomer ( @RequestParam( value = "userId" ) String userId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "DELETE FROM Customer " +
+                    "WHERE customer_id =" + userId + " ;";
+            statement.executeUpdate( statementString );
+
+            return true;
+        }catch ( Exception e ){
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
 }
