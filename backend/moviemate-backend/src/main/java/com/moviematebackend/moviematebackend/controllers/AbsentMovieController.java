@@ -5,9 +5,11 @@ import com.moviematebackend.moviematebackend.models.responseMoldes.AbsentMovie;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -64,5 +66,29 @@ public class AbsentMovieController {
         }
     }
 
+    @GetMapping
+    public List<AbsentMovie> getAbsentMovies ( @RequestParam( value = "page" ) int page ) {
+        try {
+            List<AbsentMovie> returnList = new ArrayList<>();
+            String query = "SELECT * " +
+                    "FROM Requested_Movies " +
+                    "ORDER BY id " +
+                    "LIMIT 10 OFFSET " + ( 10 * ( page - 1 ) );
 
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery( query );
+            AbsentMovie absentMovie;
+            while ( resultSet.next() ) {
+                absentMovie = new AbsentMovie( resultSet.getInt( "id" ) , resultSet.getString( "movie_name" ) ,
+                        resultSet.getString( "movie_director" ) , resultSet.getString( "request_status" ) ,
+                        resultSet.getDate( "request_date" ) );
+                returnList.add( absentMovie );
+            }
+
+            return returnList;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
 }

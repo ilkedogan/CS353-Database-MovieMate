@@ -104,7 +104,7 @@ public class TableStrings {
 
     public static String searchHistory = "CREATE TABLE Search_History( " +
             "customer_id INT, " +
-            "search_date DATE NOT NULL, " +
+            "search_date TIMESTAMP NOT NULL, " +
             "search_type VARCHAR(50) NOT NULL, " +
             "search_keyword VARCHAR(100) NOT NULL, " +
             "PRIMARY KEY (customer_id, search_date), " +
