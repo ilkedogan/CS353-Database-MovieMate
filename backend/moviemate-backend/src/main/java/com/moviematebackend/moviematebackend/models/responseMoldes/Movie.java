@@ -15,6 +15,8 @@ public class Movie {
     private List<Actor> actors;
     private List<Actor> directors;
     private List<Genre> genres;
+    private List<Rate> rates;
+    private List<Review> reviews;
 
     public Movie ( int id , String title , String description , int duration , int productionYear , double price ,
                    String image , int employeeId ) {
@@ -29,6 +31,8 @@ public class Movie {
         this.actors = new ArrayList<>();
         this.directors = new ArrayList<>();
         this.genres = new ArrayList<>();
+        this.rates = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public int getEmployeeId () {
@@ -117,5 +121,21 @@ public class Movie {
 
     public void setGenres ( List<Genre> genres ) {
         this.genres = genres;
+    }
+
+    public List<Rate> getRates () {
+        return rates;
+    }
+
+    public void setRates ( List<Rate> rates ) {
+        this.rates = rates;
+    }
+
+    public List<Review> getReviews () {
+        return reviews;
+    }
+
+    public void setReviews ( List<Review> reviews ) {
+        this.reviews = reviews;
     }
 }

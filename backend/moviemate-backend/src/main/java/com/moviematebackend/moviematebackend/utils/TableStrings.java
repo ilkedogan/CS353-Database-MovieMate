@@ -210,7 +210,7 @@ public class TableStrings {
             "movie_id INT, " +
             "customer_id INT, " +
             "comment VARCHAR(200), " +
-            "PRIMARY KEY(movie_id),  " +
+            "PRIMARY KEY(movie_id, customer_id),  " +
             "FOREIGN KEY(movie_id) REFERENCES Movie(id) " +
             "ON DELETE CASCADE " +
             "ON UPDATE CASCADE, " +

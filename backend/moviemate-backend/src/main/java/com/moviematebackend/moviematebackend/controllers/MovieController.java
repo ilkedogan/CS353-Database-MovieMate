@@ -1,9 +1,7 @@
 package com.moviematebackend.moviematebackend.controllers;
 
 import com.moviematebackend.moviematebackend.exception.UserServiceException;
-import com.moviematebackend.moviematebackend.models.responseMoldes.Actor;
-import com.moviematebackend.moviematebackend.models.responseMoldes.Genre;
-import com.moviematebackend.moviematebackend.models.responseMoldes.Movie;
+import com.moviematebackend.moviematebackend.models.responseMoldes.*;
 import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
@@ -102,6 +100,28 @@ public class MovieController {
                     Actor director = new Actor( resultSet.getInt( "id" ) , resultSet.getString( "name" ) ,
                             resultSet.getString( "surname" ) , resultSet.getDate( "birth_year" ) );
                     movie.getDirectors().add( director );
+                }
+
+                String rateSelectionQuery = "SELECT * FROM Rate WHERE movie_id = '" + movieId + "' ";
+
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                resultSet = statement.executeQuery( rateSelectionQuery );
+
+                while ( resultSet.next() ) {
+                    Rate rate = new Rate( resultSet.getInt( "point" ) );
+                    movie.getRates().add( rate );
+                }
+
+                String reviewSelectionQuery = "SELECT * FROM Review WHERE movie_id = '" + movieId + "' ";
+
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                resultSet = statement.executeQuery( reviewSelectionQuery );
+
+                while ( resultSet.next() ) {
+                    Review review = new Review( resultSet.getString( "comment" ) , resultSet.getInt( "movie_id" ) ,
+                            resultSet.getInt( "customer_id" )
+                    );
+                    movie.getReviews().add( review );
                 }
 
                 return movie;
