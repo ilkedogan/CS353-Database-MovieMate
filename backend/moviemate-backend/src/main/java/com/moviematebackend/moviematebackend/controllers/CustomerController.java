@@ -91,7 +91,7 @@ public class CustomerController {
                             "'" + userId +
                             "', '" + "default" +
                             "', '" + 0 +
-                            "', 0 " +
+                            "', 50 " +
                             ");";
             statement = DatabaseConnection.getInstance().getConnection().createStatement();
             statement.executeUpdate( statementString );
@@ -256,7 +256,8 @@ public class CustomerController {
                     "( SELECT * FROM Add_Friend A, Customer C, Customer D WHERE ((C.customer_id = A.sender_id and " +
                             "A.receiver_id = D.customer_id and D.customer_id != C.customer_id) or " +
                             "(C.customer_id = A.receiver_id and A.sender_id = D.customer_id and " +
-                            "D.customer_id != C.customer_id)) and A.status = 1 and C.customer_id = '"+ customerId +"' )";
+                            "D.customer_id != C.customer_id)) and A.status = 1 and C.customer_id = '" + customerId +
+                            "' )";
 
 
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
@@ -278,4 +279,41 @@ public class CustomerController {
         }
     }
 
+    @GetMapping( "/order" )
+    public List<Order> getUserOrders ( @RequestParam( value = "customerId" ) int customerId ) {
+        try {
+            List<Order> returnList = new ArrayList<>();
+
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String query = "SELECT * FROM Customer_Order CO WHERE CO.customer_id = '" + customerId + "'";
+            ResultSet resultSet = statement.executeQuery( query );
+
+            while ( resultSet.next() ) {
+                Order order = new Order( resultSet.getInt( "id" ) , resultSet.getInt( "total_amount" ) ,
+                        resultSet.getDate( "date" ) , resultSet.getString( "checkout_type" ) ,
+                        resultSet.getInt( "customer_id" ) );
+
+                statement = DatabaseConnection.getInstance().getConnection().createStatement();
+                query = "SELECT * FROM Has_Order HO, Movie M WHERE HO.order_id = '" + order.getId() +
+                        "' and M.id = HO.movie_id ";
+
+                ResultSet tempResultSet = statement.executeQuery( query );
+
+                while ( tempResultSet.next() ) {
+                    Movie movie = new Movie( tempResultSet.getInt( "movie_id" ) , tempResultSet.getString( "title" ) ,
+                            tempResultSet.getString( "description" ) , tempResultSet.getInt( "duration" ) ,
+                            tempResultSet.getInt( "production_year" ) , tempResultSet.getFloat( "price" ) ,
+                            tempResultSet.getString( "image" ) , tempResultSet.getInt( "employee_id" ) );
+
+                    order.getMovies().add( movie );
+                }
+
+                returnList.add( order );
+            }
+
+            return returnList;
+        } catch ( Exception e ) {
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
 }
