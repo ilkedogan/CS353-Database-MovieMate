@@ -277,7 +277,7 @@ public class MovieController {
 
     @DeleteMapping( "/director" )
     public Boolean deleteDirectorFromMovie ( @RequestParam( value = "movieId" ) int movieId ,
-                                          @RequestParam( value = "directorId" ) int directorId ) {
+                                             @RequestParam( value = "directorId" ) int directorId ) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
             String statementString = "DELETE FROM Directs " +
