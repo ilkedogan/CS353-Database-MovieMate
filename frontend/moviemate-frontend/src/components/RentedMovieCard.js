@@ -10,7 +10,7 @@ import React from "react";
  * RentedMovieCard 
  */
 
-const RentedMovieCard = () => {
+const RentedMovieCard = (props) => {
 
     return (
         <div>
@@ -26,15 +26,15 @@ const RentedMovieCard = () => {
                     marginLeft: 5,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                    {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4} >
+                    <img src={props.image}                   
+                    style={{
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: 300,
+                    borderRadius: "10px",
+                  }}
+                    ></img>
                 </Grid>
 
 
@@ -69,7 +69,7 @@ const RentedMovieCard = () => {
                                 marginBottom: 6,
                                 marginRight: 3,
                             }}>
-                            due 27.01.2022
+                            {props.duedate}
                         </Grid>
 
                         <Grid
@@ -81,7 +81,7 @@ const RentedMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            {props.title}
                         </Grid>
 
                         <Grid
@@ -93,7 +93,7 @@ const RentedMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            {props.productionyear}
 
                         </Grid>
                     </Grid>
@@ -118,7 +118,7 @@ const RentedMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {props.genre}
                         </Grid>
                         <Grid
                             item xs={6}
@@ -131,7 +131,7 @@ const RentedMovieCard = () => {
                             }}
                         >
 
-                            3.66$
+                            {props.price}
                         </Grid>
                     </Grid>
                 </Grid>

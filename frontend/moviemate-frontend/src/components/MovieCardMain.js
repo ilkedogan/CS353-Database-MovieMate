@@ -14,7 +14,7 @@ import { useState } from "react";
 
 const MovieCardMain = (props) => {
 
-    const useStyles = makeStyles( {
+    const useStyles = makeStyles({
         root: {
             width: "80%",
             height: 300,
@@ -25,24 +25,24 @@ const MovieCardMain = (props) => {
             backgroundRepeat: "no-repeat",
             transition: "transform .4s",
             "&:hover": {
-                transform: "scale(1.1)",
+                transform: "scale(1.05)",
                 filter: "brightness(100%)",
             },
         },
-    } );
+    });
 
     const classes = useStyles();
-    const [ visible, setVisible ] = useState( true );
+    const [visible, setVisible] = useState(true);
     const handleMovieCardClick = () => {
         console.log("Selaaam");
     }
 
     return (
-        <div 
-        className={ classes.root }
-        onMouseOver={ () => setVisible( false ) }
-        onMouseLeave={ () => setVisible( true ) }
-        onClick={ () => handleMovieCardClick() }>
+        <div
+            className={classes.root}
+            onMouseOver={() => setVisible(false)}
+            onMouseLeave={() => setVisible(true)}
+            onClick={() => handleMovieCardClick()}>
             <Grid
                 container
                 sx={{
@@ -54,15 +54,15 @@ const MovieCardMain = (props) => {
                     marginLeft: 10,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                  {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4} >
+                    <img src={props.image}                   
+                    style={{
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: 300,
+                    borderRadius: "10px",
+                  }}
+                    ></img>
                 </Grid>
 
                 <Grid
@@ -92,7 +92,7 @@ const MovieCardMain = (props) => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            {props.title}
                         </Grid>
 
                         <Grid
@@ -104,7 +104,7 @@ const MovieCardMain = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            {props.productionyear}
 
                         </Grid>
                     </Grid>
@@ -129,7 +129,7 @@ const MovieCardMain = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {props.genre}
                         </Grid>
                         <Grid
                             item xs={6}
@@ -141,8 +141,7 @@ const MovieCardMain = (props) => {
                                 fontWeight: 500,
                             }}
                         >
-
-                            3.66$
+                            {props.price}
                         </Grid>
                     </Grid>
                 </Grid>

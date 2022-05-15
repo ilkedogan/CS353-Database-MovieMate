@@ -10,7 +10,7 @@ import React from "react";
  * OldMovieCard 
  */
 
-const OldMovieCard = () => {
+const OldMovieCard = (props) => {
 
     return (
         <div>
@@ -26,15 +26,15 @@ const OldMovieCard = () => {
                     marginLeft: 5,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                  {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4} >
+                    <img src={props.image}
+                        style={{
+                            backgroundSize: "cover",
+                            width: "100%",
+                            height: 300,
+                            borderRadius: "10px",
+                        }}
+                    ></img>
                 </Grid>
 
                 <Grid
@@ -64,7 +64,7 @@ const OldMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            {props.title}
                         </Grid>
 
                         <Grid
@@ -76,7 +76,7 @@ const OldMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            {props.productionyear}
 
                         </Grid>
                     </Grid>
@@ -100,7 +100,7 @@ const OldMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {props.genre}
                         </Grid>
                         <Grid
                             item xs={4}
@@ -113,7 +113,7 @@ const OldMovieCard = () => {
                                 paddingRight: 1,
                             }}
                         >
-                            expired 27.01.2022
+                            {props.expdate}
                         </Grid>
                     </Grid>
                 </Grid>
