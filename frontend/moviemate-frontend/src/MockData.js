@@ -88,21 +88,6 @@ export const MockData = () => {
             price: "$3.99"
         },
     ];
-    const friends = [
-        {
-            id: 1,
-            name: "Aslı Dinç",
-        },
-        {
-            id: 2,
-            name: "Hacı Çakın",
-        },
-        {
-            id: 3,
-            name: "İlke Doğan",
-        },
 
-    ]
-
-    return {allMovies, rentedMovies, oldMovies, friends}
+    return {allMovies, rentedMovies, oldMovies}
 }
