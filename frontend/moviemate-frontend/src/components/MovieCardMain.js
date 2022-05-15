@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid";
 import { fontSize } from "@mui/system";
 import axios from "axios";
 import React from "react";
+import { makeStyles } from "@mui/styles";
+import { useState } from "react";
 
 /**
  * Metehan Sacakci & Ilke Dogan
@@ -10,17 +12,44 @@ import React from "react";
  * MovieCard For Main 
  */
 
-const MovieCardMain = () => {
+const MovieCardMain = (props) => {
+
+    const useStyles = makeStyles( {
+        root: {
+            width: "80%",
+            height: 300,
+            filter: "brightness(80%)",
+            cursor: "pointer",
+            borderRadius: "16px",
+            backgroundSize: "600px 260px",
+            backgroundRepeat: "no-repeat",
+            transition: "transform .4s",
+            "&:hover": {
+                transform: "scale(1.1)",
+                filter: "brightness(100%)",
+            },
+        },
+    } );
+
+    const classes = useStyles();
+    const [ visible, setVisible ] = useState( true );
+    const handleMovieCardClick = () => {
+        console.log("Selaaam");
+    }
 
     return (
-        <div>
+        <div 
+        className={ classes.root }
+        onMouseOver={ () => setVisible( false ) }
+        onMouseLeave={ () => setVisible( true ) }
+        onClick={ () => handleMovieCardClick() }>
             <Grid
                 container
                 sx={{
                     bgcolor: Constants.MOVIEMATE_BLUE,
                     height: 300,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "80%",
+                    width: "100%",
                     marginTop: 10,
                     marginLeft: 10,
                 }}>
