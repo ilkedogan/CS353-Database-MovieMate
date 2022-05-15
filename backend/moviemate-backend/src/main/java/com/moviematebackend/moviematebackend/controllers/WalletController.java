@@ -5,27 +5,22 @@ import com.moviematebackend.moviematebackend.utils.DatabaseConnection;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Statement;
-import java.util.Date;
 
 @CrossOrigin
 @RestController
-@RequestMapping( "/friend" )
-public class FriendController {
+@RequestMapping( "/wallet" )
+public class WalletController {
 
     @PostMapping
-    public Boolean sendFriendShipRequest ( @RequestParam( value = "source" ) int source ,
-                                           @RequestParam( value = "target" ) int target ) {
+    public Boolean addMoneyToWallet ( @RequestParam( value = "customerId" ) int customerId ,
+                                      @RequestParam( value = "amount" ) int amount ) {
         try {
             Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
 
 
-            String statementString = "INSERT INTO Add_Friend( `sender_id`, `receiver_id`, `status` )" +
-                    "VALUES " +
-                    "(" +
-                    "'" + source +
-                    "', '" + target +
-                    "', '" + 0 +
-                    "'); ";
+            String statementString = "UPDATE Wallet " +
+                    "SET total_amount = total_amount + '" + amount + "'" +
+                    "WHERE customer_id = '" + customerId + "'";
 
             statement.executeUpdate( statementString );
 

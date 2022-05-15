@@ -9,8 +9,8 @@ public class MoviemateBackendApplication {
 
     public static void main ( String[] args ) {
         DatabaseConnection.getInstance().connectDatabase();
-        DatabaseConnection.dropTables();
-        DatabaseConnection.createTables();
+        //DatabaseConnection.dropTables();
+        //DatabaseConnection.createTables();
         SpringApplication.run( MoviemateBackendApplication.class , args );
 
     }

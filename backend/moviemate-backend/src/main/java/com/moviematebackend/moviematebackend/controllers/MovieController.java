@@ -201,6 +201,21 @@ public class MovieController {
         }
     }
 
+    @DeleteMapping( "/genre" )
+    public Boolean deleteGenreFromMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                          @RequestParam( value = "genreId" ) int genreId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "DELETE FROM Has_Genre " +
+                    "WHERE movie_id =" + movieId + " and genre_id = " + genreId + ";";
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
     @PostMapping( "/actor" )
     public Boolean addActorToMovie ( @RequestParam( value = "movieId" ) int movieId ,
                                      @RequestParam( value = "actorId" ) int actorId ) {
@@ -223,6 +238,21 @@ public class MovieController {
         }
     }
 
+    @DeleteMapping( "/actor" )
+    public Boolean deleteActorFromMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                          @RequestParam( value = "actorId" ) int actorId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "DELETE FROM Acts " +
+                    "WHERE movie_id =" + movieId + " and actor_id = " + actorId + ";";
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
     @PostMapping( "/director" )
     public Boolean addDirectorToMovie ( @RequestParam( value = "movieId" ) int movieId ,
                                         @RequestParam( value = "directorId" ) int directorId ) {
@@ -241,6 +271,21 @@ public class MovieController {
             return true;
         } catch ( Exception e ) {
             e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @DeleteMapping( "/director" )
+    public Boolean deleteDirectorFromMovie ( @RequestParam( value = "movieId" ) int movieId ,
+                                             @RequestParam( value = "directorId" ) int directorId ) {
+        try {
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            String statementString = "DELETE FROM Directs " +
+                    "WHERE movie_id =" + movieId + " and director_id = " + directorId + ";";
+            statement.executeUpdate( statementString );
+
+            return true;
+        } catch ( Exception e ) {
             throw new UserServiceException( e.getMessage() );
         }
     }
