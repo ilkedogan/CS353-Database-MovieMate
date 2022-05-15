@@ -62,8 +62,8 @@ const FriendCard = () => {
 
 
                 <Grid item xs={2} sx={{bgcolor: Constants.MOVIEMATE_BACKGROUND}}>
-                    <IconButton aria-label="delete" size="large" color="primary">
-                        <DeleteIcon />
+                    <IconButton aria-label="delete" size="large" color="success">
+                        <DeleteIcon fontSize="inherit" sx={{color: Constants.WHITE}}/>
                     </IconButton>
                 </Grid>
 
