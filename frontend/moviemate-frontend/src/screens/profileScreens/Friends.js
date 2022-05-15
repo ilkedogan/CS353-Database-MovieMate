@@ -3,6 +3,11 @@ import React from 'react'
 import Constants from "../../utils/Constants";
 import FriendCard from "../../components/FriendCard";
 
+/**
+ * Aslı Dinç
+ * 09.05.2022
+ * Friends
+ */
 export default function Friends(props) {
     return <Grid container style={{ display: "flex", justifyContent: "center", color: Constants.WHITE }}>
         <Grid container sx={{justifyContent: 'center', paddingTop: 2, paddingBottom: 2}} >

@@ -13,6 +13,11 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Constants from '../utils/Constants';
 
+/**
+ * Hacı Çakın
+ * 14.04.2022
+ * LoginDialog
+ */
 export default function LoginRegisterTextField(props){
     const [value,setValue] = React.useState("")
     const [visible,setVisible] = React.useState(false)

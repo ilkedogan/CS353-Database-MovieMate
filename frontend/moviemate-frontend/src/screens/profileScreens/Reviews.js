@@ -3,6 +3,11 @@ import React from 'react'
 import Constants from "../../utils/Constants";
 import ReviewMovieCard from "../../components/ReviewMovieCard";
 
+/**
+ * Aslı Dinç
+ * 09.05.2022
+ * Reviews
+ */
 export default function Reviews( props ){
     return <Grid container style={{ display: "flex", justifyContent: "center", color: Constants.WHITE }}>
         <Grid container >

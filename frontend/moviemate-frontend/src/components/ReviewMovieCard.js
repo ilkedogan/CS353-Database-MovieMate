@@ -8,10 +8,10 @@ import { Button } from "@mui/material";
 /**
  * Aslı Dinç
  * 28.04.2022
- * RatingMovieCard 
+ * ReviewgMovieCard 
  */
 
-const RatingMovieCard = () => {
+const ReviewMovieCard = () => {
 
     return (
         <div>
@@ -141,4 +141,4 @@ const RatingMovieCard = () => {
 
 };
 
-export default RatingMovieCard;
+export default ReviewMovieCard;

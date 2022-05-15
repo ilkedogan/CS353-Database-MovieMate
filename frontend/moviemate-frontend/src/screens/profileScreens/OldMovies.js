@@ -4,6 +4,11 @@ import Constants from "../../utils/Constants";
 import OldMovieCard from "../../components/OldMovieCard";
 import MovieCard from "../../components/MovieCard";
 
+/**
+ * Aslı Dinç
+ * 09.05.2022
+ * OldMovies
+ */
 export default function OldMovies(props) {
     return <Grid container style={{ display: "flex", justifyContent: "center", color: Constants.WHITE }}>
         <Grid container >

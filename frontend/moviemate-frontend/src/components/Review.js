@@ -34,14 +34,14 @@ export default function Review(props) {
                 </Grid>
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <LoginRegisterTextField multiline rows ={20} label={"Comments.."} />
+                <LoginRegisterTextField multiline rows ={20} label={"Comments..."} />
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
                 <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "20vw", borderRadius: "10px" }} onClick={() => {
                     props.onOpen(false)
                 }}>
                     <Typography style={{ color: Constants.WHITE }}>
-                        Send a Request
+                        Send
                     </Typography>
                 </Button>
 

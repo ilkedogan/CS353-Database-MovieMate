@@ -15,6 +15,11 @@ import Reviews from "./Reviews";
 import Friends from "./Friends";
 import Calendar from "./Calendar";
 
+/**
+ * Aslı Dinç
+ * 09.05.2022
+ * ProfileScreen
+ */
 export default function ProfileScreen() {
 
     const classes = useStyles();

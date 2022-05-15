@@ -4,7 +4,11 @@ import LoginRegisterTextField from "./LoginRegisterTextField";
 import Constants from "../utils/Constants";
 import { ClosedCaption, CloseRounded } from "@mui/icons-material";
 
-
+/**
+ * Hacı Çakın
+ * 14.04.2022
+ * LoginDialog
+ */
 export default function LoginDialog( props ) {
     return <Dialog open={ props.open } onClose={ () => props.onOpen( false ) } fullWidth maxWidth={ "md" }>
         <Grid container style={ {

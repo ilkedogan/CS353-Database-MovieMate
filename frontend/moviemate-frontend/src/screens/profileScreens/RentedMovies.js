@@ -3,6 +3,11 @@ import React from 'react'
 import RentedMovieCard from "../../components/RentedMovieCard";
 import Constants from "../../utils/Constants";
 
+/**
+ * Aslı Dinç
+ * 09.05.2022
+ * RentedMovies
+ */
 export default function RentedMovies(props) {
     return <Grid container style={{ display: "flex", justifyContent: "center", color: Constants.WHITE }}>
         <Grid container >
