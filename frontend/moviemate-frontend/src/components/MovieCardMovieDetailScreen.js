@@ -3,15 +3,15 @@ import Grid from "@mui/material/Grid";
 import { fontSize } from "@mui/system";
 import axios from "axios";
 import React from "react";
-import { Button } from "@mui/material";
+import { Margin } from "@mui/icons-material";
 
 /**
  * Metehan Sacakci
- * 03.05.2022
- * MovieCard_EditMovieDetailScreen
+ * 24.04.2022
+ * MovieCardMovieDetailScreen
  */
 
-const MovieCard_EditMovieDetailScreen = () => {
+const MovieCardMovieDetailScreen = () => {
 
     return (
         <div>
@@ -92,7 +92,7 @@ const MovieCard_EditMovieDetailScreen = () => {
 
                         </Grid>
                         <Grid
-                            item xs={8}
+                            item xs={12}
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
@@ -104,25 +104,7 @@ const MovieCard_EditMovieDetailScreen = () => {
                             Directed By: Jon Watts
                         </Grid>
                         <Grid
-                            item xs={4}
-                            sx={{
-                                color: Constants.WHITE,
-                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                textAlign: "center",
-                                marginTop: "20px",
-                                marginBottom: "10px",
-                            }}>
-                            <Button variant="contained" style={{
-                                        backgroundColor: Constants.MOVIEMATE_GREEN,
-                                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                        fontSize: "18px",
-                                        height: "28px",
-                                        borderRadius: 10,}}>
-                                        Add
-                            </Button>
-                        </Grid>
-                        <Grid
-                            item xs={8}
+                            item xs={12}
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
@@ -131,22 +113,6 @@ const MovieCard_EditMovieDetailScreen = () => {
                                 fontWeight: 300,
                             }}>
                             Action Fantastic
-                        </Grid>
-                        <Grid
-                            item xs={4}
-                            sx={{
-                                color: Constants.WHITE,
-                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                textAlign: "center",
-                            }}>
-                            <Button variant="contained" style={{
-                                        backgroundColor: Constants.MOVIEMATE_GREEN,
-                                        fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                        fontSize: "18px",
-                                        height: "28px",
-                                        borderRadius: 10,}}>
-                                        Add
-                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -157,4 +123,4 @@ const MovieCard_EditMovieDetailScreen = () => {
 
 };
 
-export default MovieCard_EditMovieDetailScreen;
+export default MovieCardMovieDetailScreen;

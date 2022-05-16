@@ -6,10 +6,10 @@ import { Button } from "@mui/material";
 /**
  * Metehan Sacakci
  * 03.05.2022
- * StarsCard_Deletable
+ * StarsCardDeletable
  */
 
-const StarsCard_Deletable = () => {
+const StarsCardDeletable = () => {
     return (
         <div>
             <Grid
@@ -60,4 +60,4 @@ const StarsCard_Deletable = () => {
     );
 };
 
-export default StarsCard_Deletable;
+export default StarsCardDeletable;

@@ -10,34 +10,56 @@ import SettingScreen from "./settingScreens/SettingScreen";
 import HomeScreen from "./homeSceens/HomeScreen";
 import LoginDialog from "../components/LoginDialog";
 import RegisterDialog from "../components/RegisterDialog";
+import MovieDetailScreen from "./MovieDetailScreen";
+import MovieRequests from "./MovieRequests";
+import EmployeeDeletedUsers from "./EmployeeDeletedUsers";
+import AdminEmployees from "./AdminEmployees";
 
 export default function MainScreen() {
-
-    const [ isLogged, setIsLogged ] = useState( false );
     const [ loggedIn, setLoggedIn ] = useState( false )
     const [ currentPage, setCurrentPage ] = useState( 0 )
     const [ loginDialog, setLoginDialog ] = useState( false )
     const [ registerDialog, setRegisterDialog ] = useState( false )
-
+    const [ loggedUserType, setLoggedUserType ] = useState( "" )
 
     const classes = useStyles();
     return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
         { loggedIn ?
-            <MovieNavbarUser currentPage={ currentPage } setCurrentPage={ ( val ) => setCurrentPage( val ) }
+            <MovieNavbarUser currentPage={ currentPage }
+                             loggedUserType={ loggedUserType }
+                             setCurrentPage={ ( val ) => setCurrentPage( val ) }
                              logout={ () => {
                                  setLoggedIn( false )
+                                 setLoggedUserType( "" )
                                  setCurrentPage( 0 )
                              } }
             /> :
-            <MovieNavbar openLoginDialog={ () => setLoginDialog( true ) }
-                         openRegisterDialog={ () => setRegisterDialog( true ) }
+            <MovieNavbar
+                setCurrentPage={ ( val ) => setCurrentPage( val ) }
+                openLoginDialog={ () => setLoginDialog( true ) }
+                openRegisterDialog={ () => setRegisterDialog( true ) }
             /> }
-        { currentPage === 0 ? <HomeScreen/> :
-            currentPage === 1 ? <CartScreen/> :
-                currentPage === 2 ? <ProfileScreen/> :
-                    currentPage === 3 ? <SettingScreen/> : <SettingScreen/> }
-        { loginDialog && <LoginDialog setLoggedIn={ ( val ) => setLoggedIn( val ) } open={ loginDialog }
-                                      onOpen={ ( val ) => setLoginDialog( val ) }/> }
+        { loggedUserType === "Employee" && currentPage === 0 ?
+            <MovieRequests setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+            loggedUserType === "Employee" && currentPage === 1 ?
+                <EmployeeDeletedUsers setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                loggedUserType === "Admin" ? <AdminEmployees setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                    currentPage === 0 ?
+                        <HomeScreen openLoginDialog={ () => setLoginDialog( true ) } isLogged={ loggedIn }
+                                    setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                        currentPage === 1 ? <CartScreen/> :
+                            currentPage === 2 ? <ProfileScreen/> :
+                                currentPage === 3 ? <SettingScreen/> :
+                                    currentPage === 4 ?
+                                        <MovieDetailScreen setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                                        <SettingScreen/> }
+        { loginDialog &&
+
+
+        <LoginDialog loggedUserType={ loggedUserType }
+                     setLoggedUserType={ ( val ) => setLoggedUserType( val ) }
+                     setLoggedIn={ ( val ) => setLoggedIn( val ) } open={ loginDialog }
+                     onOpen={ ( val ) => setLoginDialog( val ) }/> }
         { registerDialog && <RegisterDialog open={ registerDialog } onOpen={ ( val ) => setRegisterDialog( val ) }/> }
     </div>
 }

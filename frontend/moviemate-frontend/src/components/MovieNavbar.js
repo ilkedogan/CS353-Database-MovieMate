@@ -25,7 +25,7 @@ export default function ( props ) {
                     cursor: "pointer"
 
                 } }>
-                    <Typography style={
+                    <Typography onClick={ () => props.setCurrentPage( 0 ) } style={
                         {
                             alignItems: "center",
                             fontSize: "32px",

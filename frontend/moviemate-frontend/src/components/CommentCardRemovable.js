@@ -8,10 +8,10 @@ import { Button } from "@mui/material";
 /**
  * Metehan Sacakci
  * 03.05.2022
- * CommentCard_Removable
+ * CommentCardRemovable
  */
 
-const CommentCard_Removable = () => {
+const CommentCardRemovable = () => {
     return (
         <Grid
                 item
@@ -59,4 +59,4 @@ const CommentCard_Removable = () => {
     );
 };
 
-export default CommentCard_Removable;
+export default CommentCardRemovable;

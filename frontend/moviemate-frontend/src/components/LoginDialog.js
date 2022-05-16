@@ -3,13 +3,20 @@ import Dialog from "@mui/material/Dialog"
 import LoginRegisterTextField from "./LoginRegisterTextField";
 import Constants from "../utils/Constants";
 import { ClosedCaption, CloseRounded } from "@mui/icons-material";
+import React from 'react'
 
 /**
  * Hacı Çakın
  * 14.04.2022
  * LoginDialog
  */
+
+
+
 export default function LoginDialog( props ) {
+    const [ userType, setUserType ] = React.useState( "Customer" )
+    let users = [ "Customer", "Admin", "Employee" ]
+
     return <Dialog open={ props.open } onClose={ () => props.onOpen( false ) } fullWidth maxWidth={ "md" }>
         <Grid container style={ {
             display: "flex",
@@ -26,14 +33,14 @@ export default function LoginDialog( props ) {
                         <CloseRounded style={ { color: Constants.MOVIEMATE_RED } }/>
                     </Button>
                 </Grid>
-                <Grid item xs={ 3 }>
+                <Grid item xs={ 2 }>
 
                 </Grid>
-                <Grid item xs={ 2 }
+                <Grid item xs={ 4 }
                       style={ { display: "flex", justifyContent: "center", paddingBottom: 40, fontSize: 30 } }>
-                    Login
+                    { userType + " Login" }
                 </Grid>
-                <Grid item xs={ 5 }>
+                <Grid item xs={ 4 }>
 
                 </Grid>
             </Grid>
@@ -56,12 +63,28 @@ export default function LoginDialog( props ) {
                         onClick={ () => {
                             props.setLoggedIn( true )
                             props.onOpen( false )
+                            props.setLoggedUserType( userType )
                         } }>
                     <Typography style={ { color: Constants.WHITE } }>
-                        Login
+                        { "Login" }
                     </Typography>
                 </Button>
 
+            </Grid>
+            <Grid container style={ { display: "flex", justifyContent: "center", paddingTop: "40px" } }>
+                { users.map( user => {
+                    if ( user !== userType ) {
+
+                        return <Button
+                            onClick={ () => setUserType( user ) }
+                            style={ {
+                                color: Constants.MOVIEMATE_GREY
+                            } }>
+                            { user }
+                        </Button>
+                    }
+
+                } ) }
             </Grid>
         </Grid>
 

@@ -10,7 +10,7 @@ import MovieRequestCard from "../components/MovieRequestCard";
  * MovieRequests
  */
 
-const MovieRequests = () => {
+export default function MovieRequests(props) {
 
     return (
         <div style={{ background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
@@ -49,7 +49,9 @@ const MovieRequests = () => {
                             Movie Requests
                         </Button>
 
-                        <Button variant="contained" style={{
+                        <Button
+                            onClick={ () => props.setCurrentPage( 1 ) }
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_RED,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -172,4 +174,3 @@ const MovieRequests = () => {
 
 };
 
-export default MovieRequests;

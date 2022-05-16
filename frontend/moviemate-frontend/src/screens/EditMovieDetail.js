@@ -3,14 +3,14 @@ import Constants from "../utils/Constants";
 import { Button } from "@mui/material";
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import IconButton from '@mui/material/IconButton';
-import MovieCard_MovieDetailScreen from "../components/MovieCard_MovieDetailScreen";
+import MovieCardMovieDetailScreen from "../components/MovieCardMovieDetailScreen";
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
 import StarsCard from "../components/StarsCard";
 import CommentCard from "../components/CommentCard";
-import MovieCard_EditMovieDetailScreen from "../components/MovieCard_EditMovieDetailScreen";
-import StarsCard_Deletable from "../components/StarsCard_Deletable";
-import CommentCard_Removable from "../components/CommentCard_Removable";
+import MovieCardEditMovieDetailScreen from "../components/MovieCardEditMovieDetailScreen";
+import StarsCardDeletable from "../components/StarsCardDeletable";
+import CommentCardRemovable from "../components/CommentCardRemovable";
 
 /**
  * Metehan Sacakci
@@ -38,7 +38,7 @@ const EditMovieDetail = () => {
                     height: 300,
                     width: "100%",
                 }}>
-                    <MovieCard_EditMovieDetailScreen></MovieCard_EditMovieDetailScreen>
+                    <MovieCardEditMovieDetailScreen></MovieCardEditMovieDetailScreen>
                 </Grid>
                 <Grid item xs={6}>
                     <Grid item xs={12} sx={{
@@ -125,9 +125,9 @@ const EditMovieDetail = () => {
                     justifyContent: "start",
                     paddingBottom: "10px",
                 }}>
-                    <StarsCard_Deletable></StarsCard_Deletable>
-                    <StarsCard_Deletable></StarsCard_Deletable>
-                    <StarsCard_Deletable></StarsCard_Deletable>
+                    <StarsCardDeletable></StarsCardDeletable>
+                    <StarsCardDeletable></StarsCardDeletable>
+                    <StarsCardDeletable></StarsCardDeletable>
                     
                     <Grid item sx={{
                         fontFamily: Constants.ROKKIT_FONT_FAMILY,
@@ -182,9 +182,9 @@ const EditMovieDetail = () => {
                     justifyContent: "start",
                     paddingBottom: "10px",
                 }}>
-                    <CommentCard_Removable></CommentCard_Removable>
-                    <CommentCard_Removable></CommentCard_Removable>
-                    <CommentCard_Removable></CommentCard_Removable>
+                    <CommentCardRemovable></CommentCardRemovable>
+                    <CommentCardRemovable></CommentCardRemovable>
+                    <CommentCardRemovable></CommentCardRemovable>
                 </Grid>
 
             </Grid>

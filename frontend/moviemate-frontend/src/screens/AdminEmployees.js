@@ -8,10 +8,10 @@ import EmployeeCard from "../components/EmployeeCard";
 /**
  * Metehan Sacakci
  * 03.05.2022
- * Admin_Employees
+ * AdminEmployees
  */
 
-const Admin_Employees = () => {
+const AdminEmployees = () => {
 
     return (
         <div style={{ background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
@@ -79,4 +79,4 @@ const Admin_Employees = () => {
 
 };
 
-export default Admin_Employees;
+export default AdminEmployees;
