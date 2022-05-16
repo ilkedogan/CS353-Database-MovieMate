@@ -121,12 +121,12 @@ export default function ProfileScreen(props) {
 
             }}>
                 {
-                    tabIndex === 0 ? <RentedMovies /> :
-                        tabIndex === 1 ? <OldMovies /> :
-                            tabIndex === 2 ? <Ratings /> :
-                                tabIndex === 3 ? <Reviews /> :
-                                    tabIndex === 4 ? <Friends /> :
-                                        <Calendar />
+                    tabIndex === 0 ? <RentedMovies userData={props.userData}/> :
+                        tabIndex === 1 ? <OldMovies userData={props.userData}/> :
+                            tabIndex === 2 ? <Ratings userData={props.userData}/> :
+                                tabIndex === 3 ? <Reviews userData={props.userData}/> :
+                                    tabIndex === 4 ? <Friends userData={props.userData}/> :
+                                        <Calendar userData={props.userData}/>
                 }
             </Grid>
 
