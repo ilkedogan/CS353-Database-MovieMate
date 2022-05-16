@@ -21,6 +21,7 @@ export default function MainScreen() {
     const [ loginDialog, setLoginDialog ] = useState( false )
     const [ registerDialog, setRegisterDialog ] = useState( false )
     const [ loggedUserType, setLoggedUserType ] = useState( "" )
+    const [ userData, setUserData ] = useState( null )
 
     const classes = useStyles();
     return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
@@ -48,7 +49,7 @@ export default function MainScreen() {
                         <HomeScreen openLoginDialog={ () => setLoginDialog( true ) } isLogged={ loggedIn }
                                     setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
                         currentPage === 1 ? <CartScreen/> :
-                            currentPage === 2 ? <ProfileScreen/> :
+                            currentPage === 2 ? <ProfileScreen userData={ userData }/> :
                                 currentPage === 3 ? <SettingScreen/> :
                                     currentPage === 4 ?
                                         <MovieDetailScreen setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
@@ -56,7 +57,7 @@ export default function MainScreen() {
         { loginDialog &&
 
 
-        <LoginDialog loggedUserType={ loggedUserType }
+        <LoginDialog setUserData={ ( val ) => setUserData( val ) } loggedUserType={ loggedUserType }
                      setLoggedUserType={ ( val ) => setLoggedUserType( val ) }
                      setLoggedIn={ ( val ) => setLoggedIn( val ) } open={ loginDialog }
                      onOpen={ ( val ) => setLoginDialog( val ) }/> }

@@ -95,7 +95,7 @@ export default function MovieNavbarUser( props ) {
                     paddingRight: "24px",
                 } }>
 
-                    <div onClick={ () => {
+                    {props.loggedUserType === "Customer"  && <div onClick={ () => {
                         props.setCurrentPage( 1 )
 
                     } }>
@@ -108,8 +108,8 @@ export default function MovieNavbarUser( props ) {
                             fontWeight: "300"
                         } }>
                             Cart </Typography>
-                    </div>
-                    <div style={
+                    </div> }
+                    {props.loggedUserType === "Customer"  && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -118,8 +118,8 @@ export default function MovieNavbarUser( props ) {
 
                         } }>
                         |
-                    </div>
-                    <div onClick={ () => {
+                    </div> }
+                    {props.loggedUserType === "Customer"  && <div onClick={ () => {
                         props.setCurrentPage( 2 )
                     } }>
                         <Typography
@@ -132,8 +132,8 @@ export default function MovieNavbarUser( props ) {
                                 fontWeight: "300"
                             } }>
                             Profile </Typography>
-                    </div>
-                    <div style={
+                    </div> }
+                    {props.loggedUserType  === "Customer"  && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -142,8 +142,8 @@ export default function MovieNavbarUser( props ) {
 
                         } }>
                         |
-                    </div>
-                    <div onClick={ () => {
+                    </div> }
+                    {props.loggedUserType  === "Customer"  && <div onClick={ () => {
                         props.setCurrentPage( 3 )
 
                     } }>
@@ -156,8 +156,8 @@ export default function MovieNavbarUser( props ) {
                             fontWeight: "300"
                         } }>
                             Settings </Typography>
-                    </div>
-                    <div style={
+                    </div> }
+                    {props.loggedUserType === "Customer" && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -166,7 +166,7 @@ export default function MovieNavbarUser( props ) {
 
                         } }>
                         |
-                    </div>
+                    </div> }
                     <div onClick={ () => {
                         props.logout()
                     } }>

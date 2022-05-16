@@ -13,7 +13,7 @@ import React from "react";
 const RatingMovieCard = () => {
 
     return (
-        <div>
+        <div  style={ { display: "flex", justifyContent: "center" } }>
 
             <Grid
                 container

@@ -9,7 +9,7 @@ import MovieCard from "../../components/MovieCard";
  * 09.05.2022
  * OldMovies
  */
-export default function OldMovies(props) {
+export default function OldMovies( props ) {
 
     const oldMovies = [
         {
@@ -34,12 +34,14 @@ export default function OldMovies(props) {
         },
     ];
 
-    const listItems = oldMovies.map((m) => 
-        <OldMovieCard id={m.id} image={m.image} title={m.title} director={m.director} productionyear={m.productionyear} genre={m.genre} price={m.price} expdate={m.expdate}></OldMovieCard>);
 
-        return <div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: "10px" }}>
-            {listItems}
-        </div>
-    </div>
+    return <Grid container style={ { display: "flex", justifyContent: "center" } }>
+        { oldMovies.map( ( m ) =>
+            <Grid  item xs={ 6 } >
+                <OldMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }
+                              productionyear={ m.productionyear } genre={ m.genre } price={ m.price }
+                              expdate={ m.expdate }/>
+            </Grid> )
+        }
+    </Grid>
 }

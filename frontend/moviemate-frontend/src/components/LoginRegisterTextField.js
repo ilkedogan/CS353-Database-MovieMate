@@ -32,8 +32,8 @@ export default function LoginRegisterTextField(props){
     autoComplete='off'
       type={!props.isPassword ? "email" : visible ? 'text' : 'password'}
       style={{color:Constants.WHITE, paddingLeft:20,paddingRight:20}}
-      value={value}
-      onChange={(event)=>{setValue(event.target.value)}}
+      value={props.value}
+      onChange={(event)=>{props.setValue(event.target.value)}}
       endAdornment={
           props.isPassword &&
         <InputAdornment style={{color:Constants.WHITE}} position="end">

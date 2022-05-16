@@ -20,7 +20,7 @@ import Calendar from "./Calendar";
  * 09.05.2022
  * ProfileScreen
  */
-export default function ProfileScreen() {
+export default function ProfileScreen( props ) {
 
     const classes = useStyles();
     const [ tabIndex, setTabIndex ] = React.useState( 0 )
@@ -61,7 +61,7 @@ export default function ProfileScreen() {
 
 
     return ( <div>
-        <Grid container direction={ "column" } className={ classes.bg }>
+        <Grid container direction={ "column" }>
             <Grid item xs={ 2 } sx={ { paddingTop: 10, alignItems: 'center' } }>
                 <Container
                     sx={ {
@@ -82,16 +82,16 @@ export default function ProfileScreen() {
                 textAlign: "center",
                 paddingTop: 2,
                 fontWeight: 500,
-            } }> Metehan Saçakçı
+            } }> { props.userData.firstName + " " + props.userData.lastName }
             </Grid>
 
             <Grid item xs={ 6 } sx={ { alignItems: 'center', paddingTop: 2 } }>
-                <Grid container xs={ 12 } sx={ { alignItems: 'center', justifyContent:"center",display:"flex" } }>
+                <Grid container xs={ 12 } sx={ { alignItems: 'center', justifyContent: "center", display: "flex" } }>
                     <Box sx={ {
                         width: '60%',
                         height: 64,
                         bgcolor: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
-                        justifyContent:"center",display:"flex",
+                        justifyContent: "center", display: "flex",
                         alignItems: 'center',
                         borderRadius: 3,
                     } }>
@@ -100,21 +100,21 @@ export default function ProfileScreen() {
                             onChange={ ( event, index ) => {
                                 setTabIndex( index )
                             } }
-                            sx={ { alignItems: 'center', justifyContent:"center", display:"flex",} }
+                            sx={ { alignItems: 'center', justifyContent: "center", display: "flex", } }
                         >
-                            <StyledTab value={0} label={ "Rented Movies" }/>
-                            <StyledTab value={1} label={ "Old Movies" }/>
-                            <StyledTab value={2} label={ "Ratings" }/>
-                            <StyledTab value={3} label={ "Reviews" }/>
-                            <StyledTab value={4} label={ "Friends" }/>
-                            <StyledTab value={5} label={ "Calendar" }/>
+                            <StyledTab value={ 0 } label={ "Rented Movies" }/>
+                            <StyledTab value={ 1 } label={ "Old Movies" }/>
+                            <StyledTab value={ 2 } label={ "Ratings" }/>
+                            <StyledTab value={ 3 } label={ "Reviews" }/>
+                            <StyledTab value={ 4 } label={ "Friends" }/>
+                            <StyledTab value={ 5 } label={ "Calendar" }/>
                         </StyledTabs>
                     </Box>
                 </Grid>
             </Grid>
-            <Grid container style={{
-                padding:16
-            }}>
+            <Grid container style={ {
+
+            } }>
                 {
                     tabIndex === 0 ? <RentedMovies/> :
                         tabIndex === 1 ? <OldMovies/> :

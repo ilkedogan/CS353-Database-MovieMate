@@ -8,7 +8,7 @@ import Constants from "../../utils/Constants";
  * 09.05.2022
  * RentedMovies
  */
-export default function RentedMovies(props) {
+export default function RentedMovies( props ) {
 
     const rentedMovies = [
         {
@@ -31,15 +31,16 @@ export default function RentedMovies(props) {
             price: "$3.99",
             duedate: "18.05.2022"
         },
-        
+
     ];
 
-    const listItems = rentedMovies.map((m) => 
-        <RentedMovieCard id={m.id} image={m.image} title={m.title} director={m.director} productionyear={m.productionyear} genre={m.genre} price={m.price} duedate={m.duedate}></RentedMovieCard>);
 
-        return <div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: "10px"}}>
-            {listItems}
-        </div>
-    </div>
+    return <Grid container style={ { display: "flex", justifyContent: "center" } }>
+        { rentedMovies.map( ( m ) =>
+            <Grid item xs={ 6 } >
+                <RentedMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }
+                                 productionyear={ m.productionyear } genre={ m.genre } price={ m.price }
+                                 duedate={ m.duedate }/></Grid> ) }
+    </Grid>
+
 }

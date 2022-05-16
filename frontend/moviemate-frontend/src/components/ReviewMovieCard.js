@@ -14,7 +14,7 @@ import { Button } from "@mui/material";
 const ReviewMovieCard = () => {
 
     return (
-        <div>
+        <div  style={ { display: "flex", justifyContent: "center" } }>
 
             <Grid
                 container
