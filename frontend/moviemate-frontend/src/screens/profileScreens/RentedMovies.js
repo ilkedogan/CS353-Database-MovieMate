@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
-import React from 'react'
 import RentedMovieCard from "../../components/RentedMovieCard";
-import Constants from "../../utils/Constants";
+import React from 'react'
 
 /**
  * Aslı Dinç
@@ -9,8 +8,44 @@ import Constants from "../../utils/Constants";
  * RentedMovies
  */
 export default function RentedMovies( props ) {
+    const [ rentedMovies, setRentedMovies ] = React.useState( [] )
+    const [ loading, setLoading ] = React.useState( false )
+    const [ dataFetch, setDataFetch ] = React.useState( false )
+    const [ error, setError ] = React.useState( false )
 
-    const rentedMovies = [
+    if ( !dataFetch ) {
+        setDataFetch( true )
+        setLoading( true )
+        getRentedMovies()
+            .then( () => setLoading( false ) )
+    }
+
+    async function getRentedMovies() {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL + "customer/rentedActiveMovies?customerId=" + props.userData.id
+
+        await fetch( url, {
+            method: 'GET', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                } else {
+                    setRentedMovies( data )
+                }
+            } )
+            .catch( e => {
+                setError( e )
+            } )
+
+
+    }
+
+    const rentedMoviesTemp = [
         {
             id: 3,
             image: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
@@ -37,10 +72,12 @@ export default function RentedMovies( props ) {
 
     return <Grid container style={ { display: "flex", justifyContent: "center" } }>
         { rentedMovies.map( ( m ) =>
-            <Grid item xs={ 6 } >
-                <RentedMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }
-                                 productionyear={ m.productionyear } genre={ m.genre } price={ m.price }
-                                 duedate={ m.duedate }/></Grid> ) }
+            <Grid item xs={ 6 }>
+                <RentedMovieCard id={ m.id } image={ m.image } title={ m.title }
+                                 productionYear={ m.productionYear }
+                                 price={ m.price }
+                                 day={ m.day }
+                                 rentDate={ m.rentDate }/></Grid> ) }
     </Grid>
 
 }

@@ -40,7 +40,7 @@ public class BanCustomer {
     }
 
     @PostMapping("/email")
-    public Boolean insertToBanCustomerWithEmaiş ( @RequestParam( value = "customerEmail" ) String email ,
+    public Boolean insertToBanCustomerWithEmail ( @RequestParam( value = "customerEmail" ) String email ,
                                          @RequestParam( value = "employeeId" ) int employeeId ) {
         try {
             java.sql.Date date = new java.sql.Date( new Date().getTime() );

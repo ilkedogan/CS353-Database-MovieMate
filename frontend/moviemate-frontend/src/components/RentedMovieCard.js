@@ -12,6 +12,13 @@ import React from "react";
 
 const RentedMovieCard = ( props ) => {
 
+    Date.prototype.addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
+
+
     return (
         <div style={ { display: "flex", justifyContent: "center" } }>
             <Grid
@@ -65,18 +72,30 @@ const RentedMovieCard = ( props ) => {
                                 fontSize: "24px",
                                 textAlign: "right",
                                 fontWeight: 300,
-                                marginBottom: 6,
+
                                 marginRight: 3,
                             } }>
-                            { props.duedate }
+                            { "Bought on " + props.rentDate }
                         </Grid>
-
                         <Grid
                             item xs={ 12 }
                             sx={ {
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "48px",
+                                fontSize: "16px",
+                                textAlign: "right",
+                                fontWeight: 300,
+                                marginBottom: 6,
+                                marginRight: 3,
+                            } }>
+                            { props.day + " days" }
+                        </Grid>
+                        <Grid
+                            item xs={ 12 }
+                            sx={ {
+                                color: Constants.WHITE,
+                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                fontSize: "32px",
                                 textAlign: "left",
                                 fontWeight: 500,
                             } }>
@@ -92,7 +111,7 @@ const RentedMovieCard = ( props ) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             } }>
-                            { props.productionyear }
+                            { props.productionYear }
 
                         </Grid>
                     </Grid>
@@ -117,7 +136,7 @@ const RentedMovieCard = ( props ) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             } }>
-                            { props.genre }
+                            { "" }
                         </Grid>
                         <Grid
                             item xs={ 4 }
@@ -130,7 +149,7 @@ const RentedMovieCard = ( props ) => {
                             } }
                         >
 
-                            { props.price }
+                            {"$" + props.price }
                         </Grid>
                     </Grid>
                 </Grid>
