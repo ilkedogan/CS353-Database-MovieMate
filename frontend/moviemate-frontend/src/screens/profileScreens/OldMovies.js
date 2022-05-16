@@ -10,20 +10,36 @@ import MovieCard from "../../components/MovieCard";
  * OldMovies
  */
 export default function OldMovies(props) {
-    return <Grid container style={{ display: "flex", justifyContent: "center", color: Constants.WHITE }}>
-        <Grid container >
-            <Grid item xs={6} >
-                <div>
-                    <OldMovieCard/>
-                    <OldMovieCard />
-                </div>
-            </Grid>
-            <Grid item xs={6} >
-                <div>
-                    <OldMovieCard />
-                    <OldMovieCard />
-                </div>
-            </Grid>
-        </Grid>
-    </Grid>
+
+    const oldMovies = [
+        {
+            id: 1,
+            image: "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg",
+            title: "Spider-Man: No Way Home",
+            director: "Jon Watts",
+            productionyear: "2021",
+            genre: "Action",
+            price: "$3.99",
+            expdate: "18.05.2022"
+        },
+        {
+            id: 6,
+            image: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
+            title: "Matrix",
+            director: "Lana&Lilly Wachowski",
+            productionyear: "1999",
+            genre: "Action",
+            price: "$3.99",
+            duedate: "18.05.2022"
+        },
+    ];
+
+    const listItems = oldMovies.map((m) => 
+        <OldMovieCard id={m.id} image={m.image} title={m.title} director={m.director} productionyear={m.productionyear} genre={m.genre} price={m.price} expdate={m.expdate}></OldMovieCard>);
+
+        return <div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: "10px" }}>
+            {listItems}
+        </div>
+    </div>
 }

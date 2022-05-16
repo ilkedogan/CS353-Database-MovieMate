@@ -113,7 +113,7 @@ const OldMovieCard = (props) => {
                                 paddingRight: 1,
                             }}
                         >
-                            {props.expdate}
+                            expired {props.expdate}
                         </Grid>
                     </Grid>
                 </Grid>

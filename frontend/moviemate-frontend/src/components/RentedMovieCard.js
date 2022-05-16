@@ -110,7 +110,7 @@ const RentedMovieCard = (props) => {
                         }}>
 
                         <Grid
-                            item xs={6}
+                            item xs={8}
                             sx={{
                                 color: Constants.WHITE,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,
@@ -121,7 +121,7 @@ const RentedMovieCard = (props) => {
                             {props.genre}
                         </Grid>
                         <Grid
-                            item xs={6}
+                            item xs={4}
                             sx={{
                                 color: Constants.MOVIEMATE_RED,
                                 fontFamily: Constants.ROKKIT_FONT_FAMILY,

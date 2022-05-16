@@ -38,7 +38,7 @@ export default function RentedMovies(props) {
         <RentedMovieCard id={m.id} image={m.image} title={m.title} director={m.director} productionyear={m.productionyear} genre={m.genre} price={m.price} duedate={m.duedate}></RentedMovieCard>);
 
         return <div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 10 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: "10px"}}>
             {listItems}
         </div>
     </div>
