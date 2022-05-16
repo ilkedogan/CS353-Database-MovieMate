@@ -10,6 +10,7 @@ import StarsCard from "../components/StarsCard";
 import CommentCard from "../components/CommentCard";
 import { Alert } from "@mui/lab";
 import React from "react";
+import Review from "../components/Review";
 
 /**
  * Metehan Sacakci
@@ -23,6 +24,7 @@ export default function MovieDetailScreen( props ) {
     const [ currentId, setCurrentId ] = React.useState( -1 )
     const [ loading, setLoading ] = React.useState( false )
     const [ error, setError ] = React.useState( "" )
+    const [ reviewDialog, setReviewDialog ] = React.useState( false )
 
     let point = 0
 
@@ -167,7 +169,7 @@ export default function MovieDetailScreen( props ) {
                                 </Button>
                             </Grid>
                             <Grid item xs={ 12 }>
-                                <Button variant="contained" style={ {
+                                <Button onClick={ () => setReviewDialog( true ) } variant="contained" style={ {
                                     backgroundColor: Constants.MOVIEMATE_GREEN,
                                     fontFamily: Constants.ROKKIT_FONT_FAMILY,
                                     fontSize: "12px",
@@ -253,12 +255,17 @@ export default function MovieDetailScreen( props ) {
                 paddingBottom: "10px",
             } }>
                 { movie.reviews && movie.reviews.map( review => {
-                    return <CommentCard comment={ review.comment } customerId={ review.customerId }/>
+                    return <CommentCard comment={ review.comment }
+                                        customerId={ review.customerId }/>
                 } ) }
 
             </Grid>
 
         </Grid>
+        { reviewDialog && <Review setDataFetch={ () => {
+            setDataFetch( false )
+
+        } } onClose={ () => setReviewDialog( false ) } movie={ movie } userData={ props.userData }/> }
         <Snackbar open={ error.length > 2 }
                   autoHideDuration={ 2000 }
                   onClose={ () => setError( "" ) }

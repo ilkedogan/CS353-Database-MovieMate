@@ -25,8 +25,8 @@ public class ReviewController {
                     "'" + movieId +
                     "', '" + userId +
                     "', '" + review +
-                    "'); ";
-
+                    " ' ); ";
+       
             statement.executeUpdate( statementString );
 
             return true;
