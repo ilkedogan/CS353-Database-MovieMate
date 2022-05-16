@@ -9,7 +9,43 @@ import Constants from "../../utils/Constants";
  * Ratings
  */
 
-export default function Ratings(props) {
+export default function Ratings( props ) {
+    const [ ratedMovies, setRatedMovies ] = React.useState( [] )
+    const [ loading, setLoading ] = React.useState( false )
+    const [ dataFetch, setDataFetch ] = React.useState( false )
+    const [ error, setError ] = React.useState( false )
+
+    if ( !dataFetch ) {
+        setDataFetch( true )
+        setLoading( true )
+        getRatedMovies()
+            .then( () => setLoading( false ) )
+    }
+
+    async function getRatedMovies() {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL + "customer/ratedMovies?customerId=" + props.userData.id
+
+        await fetch( url, {
+            method: 'GET', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                } else {
+                    setRatedMovies( data )
+                }
+            } )
+            .catch( e => {
+                setError( e )
+            } )
+
+
+    }
 
     const ratings = [
         {
@@ -32,11 +68,11 @@ export default function Ratings(props) {
         },
 
     ];
-    return <Grid container style={{ display: "flex", justifyContent: "center" }}>
-        {ratings.map((m) =>
-            <Grid item xs={6} >
-                <RatingMovieCard id={m.id} image={m.image} title={m.title} director={m.director}
-                    productionyear={m.productionyear} genre={m.genre}
-                    rate={m.rate} /></Grid>)}
+    return <Grid container style={ { display: "flex", justifyContent: "start" } }>
+        { ratedMovies.map( ( m ) =>
+            <Grid item xs={ 6 }>
+                <RatingMovieCard id={ m.id } image={ m.image } title={ m.title }
+                                 productionYear={ m.productionYear }
+                                 rate={ m.rate }/></Grid> ) }
     </Grid>
 }

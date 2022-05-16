@@ -45,7 +45,7 @@ export default function RentedMovies( props ) {
 
     }
 
-    return <Grid container style={ { display: "flex", justifyContent: "center" } }>
+    return <Grid container style={ { display: "flex", justifyContent: "start" } }>
         { rentedMovies.map( ( m ) =>
             <Grid item xs={ 6 }>
                 <RentedMovieCard id={ m.id } image={ m.image } title={ m.title }

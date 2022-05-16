@@ -48,7 +48,7 @@ export default function OldMovies( props ) {
     }
 
 
-    return <Grid container style={ { display: "flex", justifyContent: "center" } }>
+    return <Grid container style={ { display: "flex", justifyContent: "start" } }>
         { oldMovies.map( ( m ) =>
             <Grid  item xs={ 6 } >
                 <OldMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }

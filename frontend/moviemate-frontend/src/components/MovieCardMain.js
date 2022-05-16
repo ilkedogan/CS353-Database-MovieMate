@@ -34,9 +34,10 @@ const MovieCardMain = ( props ) => {
     const classes = useStyles();
     const [ visible, setVisible ] = useState( true );
     const handleMovieCardClick = () => {
-        if(props.isLogged){
+        if ( props.isLogged ) {
+            props.setMovieId( props.id )
             props.setCurrentPage( 4 )
-        }else{
+        } else {
             props.openLoginDialog()
         }
     }
@@ -145,7 +146,7 @@ const MovieCardMain = ( props ) => {
                                 fontWeight: 500,
                             } }
                         >
-                            { "$" + props.price.toFixed(2) }
+                            { "$" + props.price.toFixed( 2 ) }
                         </Grid>
                     </Grid>
                 </Grid>

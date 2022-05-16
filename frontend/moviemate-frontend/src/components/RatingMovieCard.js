@@ -93,7 +93,7 @@ const RatingMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            {props.productionyear}
+                            {props.productionYear}
 
                         </Grid>
                     </Grid>
@@ -118,7 +118,7 @@ const RatingMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            {props.genre}
+                            {}
                         </Grid>
                     </Grid>
                 </Grid>

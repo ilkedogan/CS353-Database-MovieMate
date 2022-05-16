@@ -8,40 +8,38 @@ import Constants from "../utils/Constants";
  * StarsCard
  */
 
-const StarsCard = () => {
-    return (
-        <div>
-            <Grid
-                item
-                sx={{
-                    height: 150,
+const StarsCard = ( props ) => {
+    return ( <Grid container
+                sx={ {
+                    paddingLeft:2,
+                    paddingRight:2,
                     borderRadius: Constants.BORDER_RADIUS,
-                    width: "8%",
-                }}>
+                    display:"flex",
+                    justifyContent:"center",
+                    width: "8vw",
+                } }>
 
-                <Grid item sx={{
+                <Grid item xs={12} sx={ {
                     bgcolor: Constants.MOVIEMATE_GREEN,
                     alignContent: "center",
-                    height: 100,
-                    width: 100,
+                    height: "6vw",
+                    width: "6vw",
                     borderRadius: '100%',
-                }}>
+                } }>
                 </Grid>
 
-                <Grid item sx={{
+                <Grid item xs={12} sx={ {
                     color: Constants.WHITE,
                     fontFamily: Constants.ROKKIT_FONT_FAMILY,
                     fontSize: "22px",
                     textAlign: "center",
                     fontWeight: 500,
                     alignContent: "center",
-                    marginLeft: "10px",
-                }}>
-                    Andrew Garfield
+                } }>
+                    { props.name }
                 </Grid>
 
             </Grid>
-        </div>
     );
 };
 
