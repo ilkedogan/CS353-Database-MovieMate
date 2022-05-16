@@ -10,37 +10,50 @@ import MovieCard from "../../components/MovieCard";
  * OldMovies
  */
 export default function OldMovies( props ) {
+    const [ oldMovies, setOldMovies ] = React.useState( [] )
+    const [ loading, setLoading ] = React.useState( false )
+    const [ dataFetch, setDataFetch ] = React.useState( false )
+    const [ error, setError ] = React.useState( false )
 
-    const oldMovies = [
-        {
-            id: 1,
-            image: "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg",
-            title: "Spider-Man: No Way Home",
-            director: "Jon Watts",
-            productionyear: "2021",
-            genre: "Action",
-            price: "$3.99",
-            expdate: "12.05.2022"
-        },
-        {
-            id: 2,
-            image: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
-            title: "The Shawshank Redemption",
-            director: "Frank Darabont",
-            productionyear: "1994",
-            genre: "Drama",
-            price: "$3.99",
-            expdate: "13.05.2022"
-        },
-    ];
+    if ( !dataFetch ) {
+        setDataFetch( true )
+        setLoading( true )
+        getOldMovies()
+            .then( () => setLoading( false ) )
+    }
+
+    async function getOldMovies() {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL + "customer/rentedOldMovies?customerId=" + props.userData.id
+
+        await fetch( url, {
+            method: 'GET', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                } else {
+                    setOldMovies( data )
+                }
+            } )
+            .catch( e => {
+                setError( e )
+            } )
+
+
+    }
 
 
     return <Grid container style={ { display: "flex", justifyContent: "center" } }>
         { oldMovies.map( ( m ) =>
             <Grid  item xs={ 6 } >
                 <OldMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }
-                              productionyear={ m.productionyear } genre={ m.genre } price={ m.price }
-                              expdate={ m.expdate }/>
+                              productionYear={ m.productionYear } price={ m.price }
+                              day={ m.day } rentDate={ m.rentDate }/>
             </Grid> )
         }
     </Grid>

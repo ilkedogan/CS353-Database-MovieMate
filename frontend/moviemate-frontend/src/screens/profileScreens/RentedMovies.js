@@ -3,7 +3,7 @@ import RentedMovieCard from "../../components/RentedMovieCard";
 import React from 'react'
 
 /**
- * Aslı Dinç
+ * Aslı Dinç & Hacı Çakın
  * 09.05.2022
  * RentedMovies
  */
@@ -44,31 +44,6 @@ export default function RentedMovies( props ) {
 
 
     }
-
-    const rentedMoviesTemp = [
-        {
-            id: 3,
-            image: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
-            title: "Fight Club",
-            director: "David Fincher",
-            productionyear: "1999",
-            genre: "Drama",
-            price: "$3.99",
-            duedate: "17.05.2022"
-        },
-        {
-            id: 6,
-            image: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
-            title: "Matrix",
-            director: "Lana&Lilly Wachowski",
-            productionyear: "1999",
-            genre: "Action",
-            price: "$3.99",
-            duedate: "18.05.2022"
-        },
-
-    ];
-
 
     return <Grid container style={ { display: "flex", justifyContent: "center" } }>
         { rentedMovies.map( ( m ) =>

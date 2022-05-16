@@ -76,7 +76,7 @@ const OldMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            {props.productionyear}
+                            {props.productionYear}
 
                         </Grid>
                     </Grid>
@@ -100,7 +100,7 @@ const OldMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            {props.genre}
+                            {""}
                         </Grid>
                         <Grid
                             item xs={4}
@@ -113,7 +113,7 @@ const OldMovieCard = (props) => {
                                 paddingRight: 1,
                             }}
                         >
-                            expired {props.expdate}
+                            EXPIRED
                         </Grid>
                     </Grid>
                 </Grid>
