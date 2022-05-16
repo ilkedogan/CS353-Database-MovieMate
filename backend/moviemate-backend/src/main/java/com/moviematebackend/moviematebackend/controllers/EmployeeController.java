@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -106,6 +108,30 @@ public class EmployeeController {
             return true;
         } catch ( Exception e ) {
             e.printStackTrace();
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
+
+    @GetMapping("/all")
+    public List<Employee> getAllEmployee(){
+        try {
+            List<Employee> returnList = new ArrayList<>();
+            String query = "SELECT * FROM Employee ";
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery( query );
+            Employee employee;
+            while ( resultSet.next() ) {
+                employee = new Employee( resultSet.getInt( "employee_id" ) ,
+                        resultSet.getString( "email" ) ,
+                        resultSet.getString( "password" ) ,
+                        resultSet.getString( "first_name" ) ,
+                        resultSet.getString( "last_name" ) ,
+                        resultSet.getString( "social_insurance_number" ) );
+                returnList.add( employee );
+            }
+
+            return returnList;
+        } catch ( Exception e ) {
             throw new UserServiceException( e.getMessage() );
         }
     }
