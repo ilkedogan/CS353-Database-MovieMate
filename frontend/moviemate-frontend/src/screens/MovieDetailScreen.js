@@ -103,7 +103,8 @@ export default function MovieDetailScreen( props ) {
             </Grid>
             <Grid item xs={ 6 }>
                 <Grid item xs={ 12 } sx={ {
-                    maxheight: 130,
+                    maxHeight: 130,
+                    minHeight:130,
                     width: "100%",
                 } }>
                     <p style={ { color: Constants.WHITE, textAlign: 'left' } }>{ movie.description } </p>

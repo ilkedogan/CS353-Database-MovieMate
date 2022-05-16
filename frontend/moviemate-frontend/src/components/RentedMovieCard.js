@@ -12,15 +12,18 @@ import React from "react";
 
 const RentedMovieCard = ( props ) => {
 
-    Date.prototype.addDays = function(days) {
-        var date = new Date(this.valueOf());
-        date.setDate(date.getDate() + days);
+    Date.prototype.addDays = function ( days ) {
+        var date = new Date( this.valueOf() );
+        date.setDate( date.getDate() + days );
         return date;
     }
 
 
     return (
-        <div style={ { display: "flex", justifyContent: "center" } }>
+        <div onClick={ () => {
+            props.setCurrentPage( 4 )
+            props.setMovieId( props.id )
+        } } style={ { display: "flex", justifyContent: "center", cursor: "pointer" } }>
             <Grid
                 container
                 sx={ {
@@ -149,7 +152,7 @@ const RentedMovieCard = ( props ) => {
                             } }
                         >
 
-                            {"$" + props.price }
+                            { "$" + props.price }
                         </Grid>
                     </Grid>
                 </Grid>

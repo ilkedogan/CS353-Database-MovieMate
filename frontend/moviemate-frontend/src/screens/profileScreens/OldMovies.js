@@ -50,10 +50,13 @@ export default function OldMovies( props ) {
 
     return <Grid container style={ { display: "flex", justifyContent: "start" } }>
         { oldMovies.map( ( m ) =>
-            <Grid  item xs={ 6 } >
-                <OldMovieCard id={ m.id } image={ m.image } title={ m.title } director={ m.director }
-                              productionYear={ m.productionYear } price={ m.price }
-                              day={ m.day } rentDate={ m.rentDate }/>
+            <Grid item xs={ 6 }>
+                <OldMovieCard
+                    setCurrentPage={ ( val ) => props.setCurrentPage( val ) }
+                    setMovieId={ ( val ) => props.setMovieId( val ) }
+                    id={ m.id } image={ m.image } title={ m.title } director={ m.director }
+                    productionYear={ m.productionYear } price={ m.price }
+                    day={ m.day } rentDate={ m.rentDate }/>
             </Grid> )
         }
     </Grid>

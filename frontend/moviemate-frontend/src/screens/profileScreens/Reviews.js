@@ -8,7 +8,7 @@ import ReviewMovieCard from "../../components/ReviewMovieCard";
  * 09.05.2022
  * Reviews
  */
-export default function Reviews( props ){
+export default function Reviews( props ) {
 
     const [ reviewedMovies, setReviewedMovies ] = React.useState( [] )
     const [ loading, setLoading ] = React.useState( false )
@@ -47,11 +47,13 @@ export default function Reviews( props ){
 
     }
 
-    return <Grid container style={{ display: "flex", justifyContent: "center" }}>
-        {reviewedMovies.map((m) =>
-            <Grid item xs={6} >
-                <ReviewMovieCard id={m.id} image={m.image} title={m.title} director={m.director}
-                    productionYear={m.productionYear}
-                    review={m.review} /></Grid>)}
+    return <Grid container style={ { display: "flex", justifyContent: "center" } }>
+        { reviewedMovies.map( ( m ) =>
+            <Grid item xs={ 6 }>
+                <ReviewMovieCard setCurrentPage={ ( val ) => props.setCurrentPage( val ) }
+                                 setMovieId={ ( val ) => props.setMovieId( val ) } id={ m.id } image={ m.image }
+                                 title={ m.title } director={ m.director }
+                                 productionYear={ m.productionYear }
+                                 review={ m.review }/></Grid> ) }
     </Grid>
 }

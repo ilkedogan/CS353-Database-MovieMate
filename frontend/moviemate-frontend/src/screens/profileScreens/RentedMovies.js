@@ -48,11 +48,14 @@ export default function RentedMovies( props ) {
     return <Grid container style={ { display: "flex", justifyContent: "start" } }>
         { rentedMovies.map( ( m ) =>
             <Grid item xs={ 6 }>
-                <RentedMovieCard id={ m.id } image={ m.image } title={ m.title }
-                                 productionYear={ m.productionYear }
-                                 price={ m.price }
-                                 day={ m.day }
-                                 rentDate={ m.rentDate }/></Grid> ) }
+                <RentedMovieCard
+                    setCurrentPage={ ( val ) => props.setCurrentPage( val ) }
+                    setMovieId={ ( val ) => props.setMovieId( val ) }
+                    id={ m.id } image={ m.image } title={ m.title }
+                    productionYear={ m.productionYear }
+                    price={ m.price }
+                    day={ m.day }
+                    rentDate={ m.rentDate }/></Grid> ) }
 
     </Grid>
 

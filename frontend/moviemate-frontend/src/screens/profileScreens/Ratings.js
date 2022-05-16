@@ -71,8 +71,11 @@ export default function Ratings( props ) {
     return <Grid container style={ { display: "flex", justifyContent: "start" } }>
         { ratedMovies.map( ( m ) =>
             <Grid item xs={ 6 }>
-                <RatingMovieCard id={ m.id } image={ m.image } title={ m.title }
-                                 productionYear={ m.productionYear }
-                                 rate={ m.rate }/></Grid> ) }
+                <RatingMovieCard
+                    setCurrentPage={ ( val ) => props.setCurrentPage( val ) }
+                    setMovieId={ ( val ) => props.setMovieId( val ) }
+                    id={ m.id } image={ m.image } title={ m.title }
+                    productionYear={ m.productionYear }
+                    rate={ m.rate }/></Grid> ) }
     </Grid>
 }

@@ -101,7 +101,9 @@ export default function MainScreen() {
                                     setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
                         currentPage === 1 ? <CartScreen/> :
                             currentPage === 2 ?
-                                <ProfileScreen setMovieId={ ( val ) => setMovieId( val ) } userData={ userData }/> :
+                                <ProfileScreen
+                                    setCurrentPage={ ( val ) => setCurrentPage( val ) }
+                                    setMovieId={ ( val ) => setMovieId( val ) } userData={ userData }/> :
                                 currentPage === 3 ? <SettingScreen setMovieId={ ( val ) => setMovieId( val ) }/> :
                                     currentPage === 4 ?
                                         <MovieDetailScreen userData={ userData } movieId={ movieId }

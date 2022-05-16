@@ -13,7 +13,10 @@ import React from "react";
 const OldMovieCard = (props) => {
 
     return (
-        <div style={ { display: "flex", justifyContent: "center" } }>
+        <div onClick={ () => {
+            props.setCurrentPage( 4 )
+            props.setMovieId( props.id )
+        } } style={ { display: "flex", justifyContent: "center",cursor:"pointer" } }>
 
             <Grid
                 container
