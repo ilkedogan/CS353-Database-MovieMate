@@ -2,6 +2,11 @@ import Grid from "@mui/material/Grid";
 import Constants from "../utils/Constants";
 import { Button } from "@mui/material";
 import MovieRequestCard from "../components/MovieRequestCard";
+import React from 'react'
+import AddMovie from "../components/AddMovie";
+import AddDirector from "../components/AddDirector";
+import AddActor from "../components/AddActor";
+import AddGenre from "../components/AddGenre";
 
 
 /**
@@ -11,6 +16,8 @@ import MovieRequestCard from "../components/MovieRequestCard";
  */
 
 export default function MovieRequests(props) {
+
+    const [ openDialog, setOpenDialog ] = React.useState("")
 
     return (
         <div style={{ background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
@@ -106,7 +113,9 @@ export default function MovieRequests(props) {
                         justifyContent: "center",
                     }}>
 
-                        <Button variant="contained" style={{
+                        <Button 
+                            onClick={() => setOpenDialog("addMovie")}
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_GREEN,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -121,7 +130,9 @@ export default function MovieRequests(props) {
                             Add a Movie
                         </Button>
 
-                        <Button variant="contained" style={{
+                        <Button 
+                            onClick={() => setOpenDialog("addDirector")}
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_GREEN,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -136,7 +147,9 @@ export default function MovieRequests(props) {
                             Add a Director
                         </Button>
 
-                        <Button variant="contained" style={{
+                        <Button 
+                            onClick={() => setOpenDialog("addStar")}
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_GREEN,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -151,7 +164,9 @@ export default function MovieRequests(props) {
                             Add a Star
                         </Button>
 
-                        <Button variant="contained" style={{
+                        <Button 
+                            onClick={() => setOpenDialog("addGenre")}
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_GREEN,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -169,6 +184,12 @@ export default function MovieRequests(props) {
                     <Grid item xs={2} sx={{ height: 70 }} />
                 </Grid>
             </Grid>
+
+            {openDialog === "addMovie" ? <AddMovie open={true} onClose={() => setOpenDialog("")}/> : 
+                openDialog === "addDirector" ? <AddDirector open={true} onClose={() => setOpenDialog("")}/> :
+                    openDialog === "addStar" ? <AddActor open={true} onClose={() => setOpenDialog("")}/> :
+                        openDialog === "addGenre" ? <AddGenre open={true} onClose={() => setOpenDialog("")}/> : null}
+
         </div>
     );
 

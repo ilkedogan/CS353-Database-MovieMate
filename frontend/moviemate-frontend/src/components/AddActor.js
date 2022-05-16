@@ -9,7 +9,7 @@ import Constants from "../utils/Constants";
  * Add a Actor
  */
 export default function AddActor( props ) {
-    return <Dialog open={ true } onClose={ () => props.onOpen( false ) } fullWidth maxWidth={ "md" }>
+    return <Dialog open={ true } onClose={ () => props.onClose() } fullWidth maxWidth={ "md" }>
         <Grid container style={ {
             display: "flex",
             justifyContent: "center",
@@ -41,7 +41,7 @@ export default function AddActor( props ) {
                     fontWeight: "bold"
                 } }>
                     <Button onClick={ () => {
-                        props.onOpen( false )
+                        props.onClose()
                     } }>
                         Exit
                     </Button>
@@ -59,7 +59,7 @@ export default function AddActor( props ) {
             <Grid container style={ { display: "flex", justifyContent: "center", paddingTop: "40px" } }>
                 <Button style={ { background: Constants.MOVIEMATE_GREEN, width: "10vw", borderRadius: "10px" } }
                         onClick={ () => {
-                            props.onOpen( false )
+                            props.onClose()
                         } }>
                     <Typography style={ { color: Constants.WHITE } }>
                         Add
