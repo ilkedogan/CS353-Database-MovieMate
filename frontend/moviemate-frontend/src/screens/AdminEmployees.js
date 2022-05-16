@@ -3,7 +3,8 @@ import Constants from "../utils/Constants";
 import { Button } from "@mui/material";
 import MovieRequestCard from "../components/MovieRequestCard";
 import EmployeeCard from "../components/EmployeeCard";
-
+import AddEmployee from "../components/AddEmployee";
+import React from 'react'
 
 /**
  * Metehan Sacakci
@@ -11,7 +12,9 @@ import EmployeeCard from "../components/EmployeeCard";
  * AdminEmployees
  */
 
-const AdminEmployees = () => {
+ export default function AdminEmployees(props) {
+
+    const [ openDialog, setOpenDialog ] = React.useState("")
 
     return (
         <div style={{ background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
@@ -34,7 +37,9 @@ const AdminEmployees = () => {
                         justifyContent: "center",
                     }}>
 
-                        <Button variant="contained" style={{
+                        <Button 
+                            onClick={() => setOpenDialog("addEmployee")}
+                            variant="contained" style={{
                             backgroundColor: Constants.MOVIEMATE_GREEN,
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
@@ -74,9 +79,10 @@ const AdminEmployees = () => {
                     <EmployeeCard />
                 </Grid>
             </Grid>
+
+            {openDialog === "addEmployee" ? <AddEmployee open={true} onClose={() => setOpenDialog("")}/> : null}
         </div>
     );
 
 };
 
-export default AdminEmployees;

@@ -9,7 +9,7 @@ import Constants from "../utils/Constants";
  * Add an Employee
  */
 export default function AddEmployee(props) {
-    return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
+    return <Dialog open={true} onClose={() => props.onClose()} fullWidth maxWidth={"md"}>
         <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
             <Grid container>
                 <Grid item xs={2}>
@@ -27,7 +27,7 @@ export default function AddEmployee(props) {
 
                 <Grid item xs={2} style={{ display: "flex", justifyContent: "center", paddingBottom: 40, fontSize: 30, fontWeight: "bold" }}>
                     <Button onClick={() => {
-                        props.onOpen(false)
+                        props.onClose()
                     }}>
                         Exit
                     </Button>
@@ -47,7 +47,7 @@ export default function AddEmployee(props) {
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center", paddingTop: "20vh" }}>
                 <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "10vw", borderRadius: "10px" }} onClick={() => {
-                    props.onOpen(false)
+                    props.onClose()
                 }}>
                     <Typography style={{ color: Constants.WHITE }}>
                         Create
