@@ -108,7 +108,7 @@ const MovieCardMain = ( props ) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             } }>
-                            { props.productionyear }
+                            { props.productionYear }
 
                         </Grid>
                     </Grid>
@@ -133,7 +133,7 @@ const MovieCardMain = ( props ) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             } }>
-                            { props.genre }
+                            { "" }
                         </Grid>
                         <Grid
                             item xs={ 6 }
@@ -145,7 +145,7 @@ const MovieCardMain = ( props ) => {
                                 fontWeight: 500,
                             } }
                         >
-                            { props.price }
+                            { "$" + props.price.toFixed(2) }
                         </Grid>
                     </Grid>
                 </Grid>
