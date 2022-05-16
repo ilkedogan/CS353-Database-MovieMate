@@ -316,4 +316,28 @@ public class CustomerController {
             throw new UserServiceException( e.getMessage() );
         }
     }
+
+    @GetMapping( "/allBanned" )
+    public List<Customer> getAllBannedCustomers () {
+        try {
+            List<Customer> returnList = new ArrayList<>();
+            String query = "SELECT * FROM Customer C, Ban_Customer B WHERE C.customer_id = B.customer_id ";
+            Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery( query );
+            Customer customer;
+            while ( resultSet.next() ) {
+                customer = new Customer( resultSet.getInt( "customer_id" ) ,
+                        resultSet.getString( "first_name" ) ,
+                        resultSet.getString( "last_name" ) ,
+                        resultSet.getString( "email" ) ,
+                        resultSet.getString( "password" ) ,
+                        resultSet.getString( "account_status" ) );
+                returnList.add( customer );
+            }
+
+            return returnList;
+        } catch ( Exception e ) {
+            throw new UserServiceException( e.getMessage() );
+        }
+    }
 }
