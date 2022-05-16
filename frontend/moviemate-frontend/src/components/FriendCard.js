@@ -10,6 +10,9 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+
+
 
 /**
  * Aslı Dinç
@@ -43,6 +46,7 @@ const FriendCard = (props) => {
                 <Grid
                     item xs={3}>
                     <Container
+                    /*
                         sx={{
                             bgcolor: Constants.MOVIEMATE_GREEN,
                             width: 110,
@@ -50,7 +54,16 @@ const FriendCard = (props) => {
                             borderRadius: '100%',
                             alignItems: 'center',
                         }}>
-
+                            */>
+                        <Avatar
+                            sx={{
+                                bgcolor: Constants.MOVIEMATE_GREEN ,                            
+                                width: 70,
+                                height: 70,
+                            }}
+                            alt={props.name}
+                            src="/broken-image.jpg"
+                        />
                     </Container>
                 </Grid>
 
@@ -66,9 +79,9 @@ const FriendCard = (props) => {
                     }}> {props.name} </Grid>
 
 
-                <Grid item xs={2} sx={{bgcolor: Constants.MOVIEMATE_BACKGROUND}}>
+                <Grid item xs={2} sx={{ bgcolor: Constants.MOVIEMATE_BACKGROUND }}>
                     <IconButton onClick={handleClick} aria-label="delete" size="large" color="success">
-                        <DeleteIcon fontSize="inherit" sx={{color: Constants.WHITE}}/>
+                        <DeleteIcon fontSize="inherit" sx={{ color: Constants.WHITE }} />
                     </IconButton>
                 </Grid>
 

@@ -11,10 +11,10 @@ import { Button } from "@mui/material";
  * ReviewgMovieCard 
  */
 
-const ReviewMovieCard = () => {
+const ReviewMovieCard = (props) => {
 
     return (
-        <div  style={ { display: "flex", justifyContent: "center" } }>
+        <div style={{ display: "flex", justifyContent: "center" }}>
 
             <Grid
                 container
@@ -27,15 +27,15 @@ const ReviewMovieCard = () => {
                     marginLeft: 5,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                    {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4} >
+                    <img src={props.image}
+                        style={{
+                            backgroundSize: "cover",
+                            width: "100%",
+                            height: 300,
+                            borderRadius: "10px",
+                        }}
+                    ></img>
                 </Grid>
 
 
@@ -70,7 +70,7 @@ const ReviewMovieCard = () => {
                                 marginBottom: 6,
                                 marginRight: 3,
                             }}>
-                            written 27.01.2022
+                            {props.writtendate}
                         </Grid>
 
                         <Grid
@@ -82,7 +82,7 @@ const ReviewMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            {props.title}
                         </Grid>
 
                         <Grid
@@ -94,7 +94,7 @@ const ReviewMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            {props.productionyear}
 
                         </Grid>
                     </Grid>
@@ -119,7 +119,7 @@ const ReviewMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {props.genre}
                         </Grid>
                         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-end', paddingRight: 2 }}>
                             <Button variant="contained" style={{

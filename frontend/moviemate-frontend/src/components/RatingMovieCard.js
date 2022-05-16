@@ -10,10 +10,10 @@ import React from "react";
  * RatingMovieCard 
  */
 
-const RatingMovieCard = () => {
+const RatingMovieCard = (props) => {
 
     return (
-        <div  style={ { display: "flex", justifyContent: "center" } }>
+        <div style={{ display: "flex", justifyContent: "center" }}>
 
             <Grid
                 container
@@ -26,15 +26,15 @@ const RatingMovieCard = () => {
                     marginLeft: 5,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                    {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4}>
+                    <img src={props.image}
+                        style={{
+                            backgroundSize: "cover",
+                            width: "100%",
+                            height: 300,
+                            borderRadius: "10px",
+                        }}
+                    />
                 </Grid>
 
 
@@ -44,7 +44,7 @@ const RatingMovieCard = () => {
                         height: 300,
                         borderRadius: Constants.BORDER_RADIUS,
                     }}>
-                        
+
 
                     <Grid container
                         style={{
@@ -55,7 +55,7 @@ const RatingMovieCard = () => {
                             paddingBottom: 20,
                             paddingLeft: 15,
                             paddingRight: 15,
-                            
+
 
                         }}>
                         <Grid
@@ -69,7 +69,7 @@ const RatingMovieCard = () => {
                                 marginBottom: 2,
                                 marginRight: 3,
                             }}>
-                            4.8
+                            {props.rate}
                         </Grid>
 
                         <Grid
@@ -81,7 +81,7 @@ const RatingMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            {props.title}
                         </Grid>
 
                         <Grid
@@ -93,7 +93,7 @@ const RatingMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            {props.productionyear}
 
                         </Grid>
                     </Grid>
@@ -118,7 +118,7 @@ const RatingMovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {props.genre}
                         </Grid>
                     </Grid>
                 </Grid>

@@ -20,17 +20,17 @@ export default function OldMovies( props ) {
             productionyear: "2021",
             genre: "Action",
             price: "$3.99",
-            expdate: "18.05.2022"
+            expdate: "12.05.2022"
         },
         {
-            id: 6,
-            image: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
-            title: "Matrix",
-            director: "Lana&Lilly Wachowski",
-            productionyear: "1999",
-            genre: "Action",
+            id: 2,
+            image: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
+            title: "The Shawshank Redemption",
+            director: "Frank Darabont",
+            productionyear: "1994",
+            genre: "Drama",
             price: "$3.99",
-            duedate: "18.05.2022"
+            expdate: "13.05.2022"
         },
     ];
 
