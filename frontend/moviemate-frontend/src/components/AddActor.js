@@ -1,7 +1,18 @@
-import { DialogContent, DialogTitle, Grid, Button, TextField, Typography } from "@mui/material"
+import {
+    DialogContent,
+    DialogTitle,
+    Grid,
+    Button,
+    TextField,
+    Typography,
+    Snackbar,
+    CircularProgress
+} from "@mui/material"
 import Dialog from "@mui/material/Dialog"
 import LoginRegisterTextField from "./LoginRegisterTextField";
 import Constants from "../utils/Constants";
+import React from "react";
+import { Alert } from "@mui/lab";
 
 /**
  * İlke Doğan
@@ -9,6 +20,38 @@ import Constants from "../utils/Constants";
  * Add a Actor
  */
 export default function AddActor( props ) {
+    const [ name, setName ] = React.useState( "" )
+    const [ surname, setSurname ] = React.useState( "" )
+    const [ birth, setBirth ] = React.useState( "" )
+    const [ loading, setLoading ] = React.useState( "" )
+    const [ error, setError ] = React.useState( "" )
+
+    async function addActor( name, surname, birth ) {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL + "actor?name=" + name + "&surname=" + surname + "&birth=" + birth
+
+        await fetch( url, {
+            method: 'POST', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                } else {
+                    setError( "Successfully added!" )
+                    setName("")
+                    setSurname("")
+                    setBirth("")
+                }
+            } )
+            .catch( e => {
+                setError( e )
+            } )
+    }
+
     return <Dialog open={ true } onClose={ () => props.onClose() } fullWidth maxWidth={ "md" }>
         <Grid container style={ {
             display: "flex",
@@ -48,26 +91,42 @@ export default function AddActor( props ) {
                 </Grid>
             </Grid>
             <Grid container style={ { display: "flex", justifyContent: "center", width: "60rem" } }>
-                <LoginRegisterTextField label={ "Name" }/>
+                <LoginRegisterTextField value={ name } setValue={ ( val ) => setName( val ) }  label={ "Name" }/>
             </Grid>
             <Grid container style={ { display: "flex", justifyContent: "center", width: "60rem" } }>
-                <LoginRegisterTextField label={ "Surname" }/>
+                <LoginRegisterTextField value={ surname } setValue={ ( val ) => setSurname( val ) } label={ "Surname" }/>
             </Grid>
             <Grid container style={ { display: "flex", justifyContent: "center", width: "60rem" } }>
-                <LoginRegisterTextField label={ "Birthday" }/>
+                <LoginRegisterTextField  value={ birth } setValue={ ( val ) => setBirth( val ) }  label={ "Birthday(yyyy-mm-dd)" }/>
             </Grid>
             <Grid container style={ { display: "flex", justifyContent: "center", paddingTop: "40px" } }>
-                <Button style={ { background: Constants.MOVIEMATE_GREEN, width: "10vw", borderRadius: "10px" } }
-                        onClick={ () => {
-                            props.onClose()
-                        } }>
+                {loading ? <CircularProgress/> : <Button style={ { background: Constants.MOVIEMATE_GREEN, width: "10vw", borderRadius: "10px" } }
+                          onClick={ () => {
+                              if ( name.trim().length > 0 && surname.trim().length > 0 && birth.trim().length > 0 ) {
+                                  setLoading( true )
+                                  addActor( name, surname, birth )
+                                      .then( () => setLoading( false ) )
+                              } else {
+                                  setError( "Please fill all gaps!" )
+                              }
+
+                          } }>
                     <Typography style={ { color: Constants.WHITE } }>
                         Add
                     </Typography>
-                </Button>
+                </Button> }
 
             </Grid>
         </Grid>
-
+        <Snackbar open={ error.length > 2 }
+                  autoHideDuration={ 2000 }
+                  onClose={ () => setError( "" ) }
+        >
+            <Alert onClose={ () => setError( "" ) }
+                   severity={ "error" }
+            >
+                { error }
+            </Alert>
+        </Snackbar>
     </Dialog>
 }

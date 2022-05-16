@@ -185,10 +185,10 @@ export default function MovieRequests(props) {
                 </Grid>
             </Grid>
 
-            {openDialog === "addMovie" ? <AddMovie open={true} onClose={() => setOpenDialog("")}/> : 
-                openDialog === "addDirector" ? <AddDirector open={true} onClose={() => setOpenDialog("")}/> :
-                    openDialog === "addStar" ? <AddActor open={true} onClose={() => setOpenDialog("")}/> :
-                        openDialog === "addGenre" ? <AddGenre open={true} onClose={() => setOpenDialog("")}/> : null}
+            {openDialog === "addMovie" ? <AddMovie userData={props.userData} open={true} onClose={() => setOpenDialog("")}/> :
+                openDialog === "addDirector" ? <AddDirector userData={props.userData} open={true} onClose={() => setOpenDialog("")}/> :
+                    openDialog === "addStar" ? <AddActor userData={props.userData} open={true} onClose={() => setOpenDialog("")}/> :
+                        openDialog === "addGenre" ? <AddGenre userData={props.userData} open={true} onClose={() => setOpenDialog("")}/> : null}
 
         </div>
     );
