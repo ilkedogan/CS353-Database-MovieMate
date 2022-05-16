@@ -5,7 +5,7 @@ import Constants from "../utils/Constants";
 import React from 'react'
 
 /**
- * İlke Doğan
+ * İlke Doğan & Aslı Dinç
  * 13.04.2022
  * Add an Employee
  */

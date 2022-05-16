@@ -7,7 +7,7 @@ import AddEmployee from "../components/AddEmployee";
 import React from 'react'
 
 /**
- * Metehan Sacakci
+ * Metehan Sacakci & Aslı Dinç
  * 03.05.2022
  * AdminEmployees
  */
