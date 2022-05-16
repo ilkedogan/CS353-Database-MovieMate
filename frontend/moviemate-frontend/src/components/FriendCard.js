@@ -17,7 +17,12 @@ import Stack from '@mui/material/Stack';
  * FriendCard
  */
 
-const FriendCard = () => {
+const FriendCard = (props) => {
+
+    function handleClick() {
+        console.log("Bastınnnn");
+    }
+
 
     return (
         <div>
@@ -54,15 +59,15 @@ const FriendCard = () => {
                     sx={{
                         color: Constants.WHITE,
                         fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                        fontSize: "36px",
+                        fontSize: "30px",
                         textAlign: "left",
                         paddingLeft: 5,
                         fontWeight: 500,
-                    }}>Aslı Dinç</Grid>
+                    }}> {props.name} </Grid>
 
 
                 <Grid item xs={2} sx={{bgcolor: Constants.MOVIEMATE_BACKGROUND}}>
-                    <IconButton aria-label="delete" size="large" color="success">
+                    <IconButton onClick={handleClick} aria-label="delete" size="large" color="success">
                         <DeleteIcon fontSize="inherit" sx={{color: Constants.WHITE}}/>
                     </IconButton>
                 </Grid>
