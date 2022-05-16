@@ -4,14 +4,16 @@ import { fontSize } from "@mui/system";
 import axios from "axios";
 import React from "react";
 import { Button } from "@mui/material";
+import ReadReview from "./ReadReview";
 
 /**
  * Aslı Dinç
  * 28.04.2022
- * ReviewgMovieCard 
+ * ReviewMovieCard 
  */
 
 const ReviewMovieCard = (props) => {
+    const [openDialog, setOpenDialog] = React.useState("")
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -70,7 +72,7 @@ const ReviewMovieCard = (props) => {
                                 marginBottom: 6,
                                 marginRight: 3,
                             }}>
-                            {props.writtendate}
+                            {""}
                         </Grid>
 
                         <Grid
@@ -94,7 +96,7 @@ const ReviewMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            {props.productionyear}
+                            {props.productionYear}
 
                         </Grid>
                     </Grid>
@@ -119,16 +121,18 @@ const ReviewMovieCard = (props) => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            {props.genre}
+                            {""}
                         </Grid>
                         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-end', paddingRight: 2 }}>
-                            <Button variant="contained" style={{
-                                backgroundColor: Constants.MOVIEMATE_GREY,
-                                fontFamily: Constants.ROKKIT_FONT_FAMILY,
-                                fontSize: "12px",
-                                height: "32px",
+                            <Button
+                                onClick={() => setOpenDialog(props.review)}
+                                variant="contained" style={{
+                                    backgroundColor: Constants.MOVIEMATE_GREY,
+                                    fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                                    fontSize: "12px",
+                                    height: "32px",
 
-                            }}>
+                                }}>
                                 Read Review
                             </Button>
                         </Grid>
@@ -136,6 +140,9 @@ const ReviewMovieCard = (props) => {
                 </Grid>
 
             </Grid>
+            {openDialog.length > 0  ? <ReadReview
+                openDialog={openDialog}
+                userData={props.userData} open={true} onClose={() => setOpenDialog("")} /> : null}
         </div>
     );
 

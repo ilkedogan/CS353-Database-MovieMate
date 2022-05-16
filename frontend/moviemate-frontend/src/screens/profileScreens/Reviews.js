@@ -10,33 +10,48 @@ import ReviewMovieCard from "../../components/ReviewMovieCard";
  */
 export default function Reviews( props ){
 
-    const ratings = [
-        {
-            id: 3,
-            image: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
-            title: "Fight Club",
-            director: "David Fincher",
-            productionyear: "1999",
-            genre: "Drama",
-            writtendate: "10.05.2022"
-        },
-        {
-            id: 5,
-            image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
-            title: "Inception",
-            director: "Christopher Nolan",
-            productionyear: "2010",
-            genre: "Action",
-            writtendate: "10.05.2022"
-        },
-    
-    ];
+    const [ reviewedMovies, setReviewedMovies ] = React.useState( [] )
+    const [ loading, setLoading ] = React.useState( false )
+    const [ dataFetch, setDataFetch ] = React.useState( false )
+    const [ error, setError ] = React.useState( false )
+
+    if ( !dataFetch ) {
+        setDataFetch( true )
+        setLoading( true )
+        getReviewedMovies()
+            .then( () => setLoading( false ) )
+    }
+
+    async function getReviewedMovies() {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL + "customer/reviewedMovies?customerId=" + props.userData.id
+
+        await fetch( url, {
+            method: 'GET', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                } else {
+                    setReviewedMovies( data )
+                }
+            } )
+            .catch( e => {
+                setError( e )
+            } )
+
+
+    }
 
     return <Grid container style={{ display: "flex", justifyContent: "center" }}>
-        {ratings.map((m) =>
+        {reviewedMovies.map((m) =>
             <Grid item xs={6} >
                 <ReviewMovieCard id={m.id} image={m.image} title={m.title} director={m.director}
-                    productionyear={m.productionyear} genre={m.genre}
-                    rate={m.rate} /></Grid>)}
+                    productionYear={m.productionYear}
+                    review={m.review} /></Grid>)}
     </Grid>
 }
