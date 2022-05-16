@@ -3,6 +3,7 @@ import { useState } from "react";
 import Constants from "../../utils/Constants";
 import { Button } from "@mui/material";
 import WatchList from "../Watchlist";
+import ChangePassword from "../../components/ChangePassword";
 
 export default function SettingScreen( props ) {
 
@@ -72,7 +73,7 @@ export default function SettingScreen( props ) {
                                 borderRadius: "12px",
                             }}
                             onClick={() => {
-                                props.onOpen(false)
+                                setSettingsPage(3)
                             }}>
                             Change Password
                         </Button>
@@ -131,8 +132,8 @@ export default function SettingScreen( props ) {
 
 
 
-
+            
             {settingsPage === 2 && <WatchList goBack={() => setSettingsPage(0)}/>}
-
+            {settingsPage === 3 && <ChangePassword goBack={() => setSettingsPage(0)}/>}
         </div>
     }

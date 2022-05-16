@@ -1,18 +1,26 @@
-import { DialogContent, DialogTitle, Grid, Button, TextField, Typography } from "@mui/material"
+import { DialogContent, DialogTitle, Grid, Button, TextField, Typography, Container } from "@mui/material"
 import Dialog from "@mui/material/Dialog"
 import LoginRegisterTextField from "./LoginRegisterTextField";
 import Constants from "../utils/Constants";
-
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 /**
- * İlke Doğan
+ * İlke Doğan & Aslı Dinç
  * 13.04.2022
- * change Password card
+ * ChangePassword
  */
-export default function ChangePassword( props) {
-    return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
+export default function ChangePassword(props) {
+    return  <Container sx={{minHeight: "100vh", minWidth: "100vw", background: Constants.MOVIEMATE_BACKGROUND}}>
+    
         <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
             <Grid container>
-                <Grid item xs={2}>
+            <Grid item xs={1}>
+                    <IconButton onClick={() => props.goBack()} style={{ color: Constants.WHITE }}
+                        aria-label="arrowBack">
+                        <ArrowBackIosOutlinedIcon />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={1}>
 
                 </Grid>
                 <Grid item xs={8}
@@ -20,17 +28,12 @@ export default function ChangePassword( props) {
                         display: "flex",
                         justifyContent: "center",
                         paddingBottom: 40,
-                        fontSize: 30
+                        fontSize: 40
                     }}>
-                    Advanced Search
+                    Change Password
                 </Grid>
 
-                <Grid item xs={2} style={{ display: "flex", justifyContent: "center", paddingBottom: 40, fontSize: 30, fontWeight: "bold" }}>
-                    <Button onClick={() => {
-                        props.onOpen(false)
-                    }}>
-                        Exit
-                    </Button>
+                <Grid item xs={2} style={{ display: "flex", justifyContent: "center", paddingBottom: 20, fontSize: 30, fontWeight: "bold" }}>
                 </Grid>
             </Grid>
             <Grid container style={{display:"flex", justifyContent:"center", width: "60rem" }}>
@@ -53,5 +56,5 @@ export default function ChangePassword( props) {
             </Grid>
         </Grid>
 
-    </Dialog>
+        </Container>
 }
