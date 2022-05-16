@@ -53,6 +53,7 @@ export default function RentedMovies( props ) {
                                  price={ m.price }
                                  day={ m.day }
                                  rentDate={ m.rentDate }/></Grid> ) }
+
     </Grid>
 
 }

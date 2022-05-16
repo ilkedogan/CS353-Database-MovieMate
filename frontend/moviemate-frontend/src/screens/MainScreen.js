@@ -104,7 +104,7 @@ export default function MainScreen() {
                                 <ProfileScreen setMovieId={ ( val ) => setMovieId( val ) } userData={ userData }/> :
                                 currentPage === 3 ? <SettingScreen setMovieId={ ( val ) => setMovieId( val ) }/> :
                                     currentPage === 4 ?
-                                        <MovieDetailScreen movieId={ movieId }
+                                        <MovieDetailScreen userData={ userData } movieId={ movieId }
                                                            setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
                                         <SettingScreen/> }
         { loginDialog &&
