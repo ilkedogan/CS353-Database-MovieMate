@@ -80,7 +80,8 @@ import React from 'react'
                 </Grid>
             </Grid>
 
-            {openDialog === "addEmployee" ? <AddEmployee open={true} onClose={() => setOpenDialog("")}/> : null}
+            {openDialog === "addEmployee" ? <AddEmployee 
+            userData={props.userData} open={true} onClose={() => setOpenDialog("")}/> : null}
         </div>
     );
 
