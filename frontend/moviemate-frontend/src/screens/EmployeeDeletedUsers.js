@@ -43,7 +43,7 @@ export default function EmployeeDeletedUsers( props )
                             fontFamily: Constants.ROKKIT_FONT_FAMILY,
                             fontSize: "18px",
                             height: 40,
-                            width: "40%",
+                            width: "50%",
                             alignItems: "center",
                             justifyContent: "center",
                             marginRight: "10px",
