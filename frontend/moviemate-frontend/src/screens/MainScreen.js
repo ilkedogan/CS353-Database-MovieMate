@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useStyles } from "../utils/AppStyles.js";
 import MovieNavbar from "../components/MovieNavbar";
 import Constants from "../utils/Constants";
@@ -14,6 +14,8 @@ import MovieDetailScreen from "./MovieDetailScreen";
 import MovieRequests from "./MovieRequests";
 import EmployeeDeletedUsers from "./EmployeeDeletedUsers";
 import AdminEmployees from "./AdminEmployees";
+import { Alert } from "@mui/lab";
+import { Snackbar } from "@mui/material";
 
 export default function MainScreen() {
     const [ loggedIn, setLoggedIn ] = useState( false )
@@ -22,6 +24,51 @@ export default function MainScreen() {
     const [ registerDialog, setRegisterDialog ] = useState( false )
     const [ loggedUserType, setLoggedUserType ] = useState( "" )
     const [ userData, setUserData ] = useState( null )
+    const [ error, setError ] = useState( "" )
+
+    async function getUser() {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        let url = process.env.REACT_APP_URL
+
+        if ( localStorage.getItem( "userType" ) === "Customer" ) {
+            url = url + "customer" + '?email=' + localStorage.getItem("userEmail")
+        } else if ( localStorage.getItem( "userType" ) === "Admin" ) {
+            url = url + "admin" + '?email=' + localStorage.getItem("userEmail")
+        } else if ( localStorage.getItem( "userType" ) === "Employee" ) {
+            url = url + "employee" + '?email=' + localStorage.getItem("userEmail")
+        }
+
+        await fetch( url, {
+            method: 'GET', headers: headers
+        }, )
+            .then( response => response.json() )
+            .then( data => {
+                if ( data.message ) {
+                    setError( data.message )
+                    localStorage.clear()
+                } else {
+                    localStorage.setItem( "userId", data.id )
+                    localStorage.setItem( "userEmail", data.email )
+
+                    setUserData( data )
+                    setLoggedIn( true )
+                    setLoggedUserType( localStorage.getItem( "userType" ) )
+
+                }
+            } )
+            .catch( e => {
+                setError( e )
+                localStorage.clear()
+
+            } )
+    }
+
+    if ( !loggedIn && localStorage.getItem( "userEmail" ) ) {
+        getUser()
+    }
 
     const classes = useStyles();
     return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
@@ -30,6 +77,7 @@ export default function MainScreen() {
                              loggedUserType={ loggedUserType }
                              setCurrentPage={ ( val ) => setCurrentPage( val ) }
                              logout={ () => {
+                                 localStorage.clear()
                                  setLoggedIn( false )
                                  setLoggedUserType( "" )
                                  setCurrentPage( 0 )
@@ -41,10 +89,11 @@ export default function MainScreen() {
                 openRegisterDialog={ () => setRegisterDialog( true ) }
             /> }
         { loggedUserType === "Employee" && currentPage === 0 ?
-            <MovieRequests setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+            <MovieRequests userData={ userData } setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
             loggedUserType === "Employee" && currentPage === 1 ?
-                <EmployeeDeletedUsers setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
-                loggedUserType === "Admin" ? <AdminEmployees setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                <EmployeeDeletedUsers userData={ userData } setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                loggedUserType === "Admin" ?
+                    <AdminEmployees userData={ userData } setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
                     currentPage === 0 ?
                         <HomeScreen openLoginDialog={ () => setLoginDialog( true ) } isLogged={ loggedIn }
                                     setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
@@ -62,5 +111,15 @@ export default function MainScreen() {
                      setLoggedIn={ ( val ) => setLoggedIn( val ) } open={ loginDialog }
                      onOpen={ ( val ) => setLoginDialog( val ) }/> }
         { registerDialog && <RegisterDialog open={ registerDialog } onOpen={ ( val ) => setRegisterDialog( val ) }/> }
+        <Snackbar open={ error.length > 2 }
+                  autoHideDuration={ 2000 }
+                  onClose={ () => setError( "" ) }
+        >
+            <Alert onClose={ () => setError( "" ) }
+                   severity={ "error" }
+            >
+                { error }
+            </Alert>
+        </Snackbar>
     </div>
 }

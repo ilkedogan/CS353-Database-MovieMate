@@ -48,6 +48,10 @@ export default function LoginDialog( props ) {
                     setError( data.message )
                 } else {
                     if ( data.password === password ) {
+                        localStorage.setItem( "userId", data.id )
+                        localStorage.setItem( "userEmail", data.email )
+                        localStorage.setItem( "userType", userType )
+
                         props.setUserData( data )
                         props.setLoggedIn( true )
                         props.onOpen( false )
