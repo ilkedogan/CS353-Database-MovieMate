@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
-import Constants from "../utils/Constants";
+import Constants from "../../utils/Constants";
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import IconButton from '@mui/material/IconButton';
-import CustomerOrderCard from "../components/CustomerOrderCard";
+import CustomerOrderCard from "../../components/CustomerOrderCard";
 
 /**
  * Metehan Sacakci

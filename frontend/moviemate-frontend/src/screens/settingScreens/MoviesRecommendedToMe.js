@@ -1,45 +1,46 @@
-import MovieCardMain from "../components/MovieCardMain";
-import Constants from "../utils/Constants";
 import Grid from "@mui/material/Grid";
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import { Typography } from "@mui/material";
-import RentedMovieCard from "../components/RentedMovieCard";
+import Constants from "../../utils/Constants";
+import MovieCardMain from "../../components/MovieCardMain";
+import RentedMovieCard from "../../components/RentedMovieCard";
+import MovieCard from "../../components/MovieCard";
 
 /**
  * Aslı Dinç
  * 16.05.2022
- * OldMovies
+ * MoviesRecommendedToMe
  */
-export default function WatchList(props) {
+export default function MoviesRecommendedToMe(props) {
 
-    const watchlist = [
+    const recommended = [
         {
             id: 1,
             image: "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg",
             title: "Spider-Man: No Way Home",
             director: "Jon Watts",
-            productionyear: "2021",
+            productionYear: "2021",
             genre: "Action",
-            price: "$3.99"
+            price: "3.99"
         },
         {
             id: 2,
             image: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
             title: "The Shawshank Redemption",
             director: "Frank Darabont",
-            productionyear: "1994",
+            productionYear: "1994",
             genre: "Drama",
-            price: "$3.99"
+            price: "3.99"
         },
         {
             id: 1,
             image: "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg",
             title: "Spider-Man: No Way Home",
             director: "Jon Watts",
-            productionyear: "2021",
+            productionYear: "2021",
             genre: "Action",
-            price: "$3.99",
+            price: "3.99",
             expdate: "12.05.2022"
         },
         {
@@ -47,9 +48,9 @@ export default function WatchList(props) {
             image: "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
             title: "The Shawshank Redemption",
             director: "Frank Darabont",
-            productionyear: "1994",
+            productionYear: "1994",
             genre: "Drama",
-            price: "$3.99",
+            price: "3.99",
             expdate: "13.05.2022"
         },
     ];
@@ -72,16 +73,16 @@ export default function WatchList(props) {
                         color: Constants.WHITE, display: "flex", justifyContent: "center", fontFamily: Constants.ROKKIT_FONT_FAMILY,
                         fontSize: "48px",
                     }}>
-                        My Watchlist
+                        Movies Recommended to Me
                     </Typography>
                 </Grid>
                 <Grid item xs={1} />
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center" }}>
-                {watchlist.map((m) =>
+                {recommended.map((m) =>
                     <Grid item xs={6} >
-                        <RentedMovieCard id={m.id} image={m.image} title={m.title} director={m.director}
-                            productionyear={m.productionyear} genre={m.genre} price={m.price} />
+                        <MovieCard id={m.id} image={m.image} title={m.title}
+                            productionYear={m.productionYear} price={m.price} />
                     </Grid>)
                 }
             </Grid>

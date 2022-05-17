@@ -7,7 +7,7 @@ import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 
 /**
- * Metehan Sacakci & Ilke Dogan
+ * Metehan Sacakci & Ilke Dogan & Aslı Dinç
  * 06.03.2022
  * MovieCard For Main
  */

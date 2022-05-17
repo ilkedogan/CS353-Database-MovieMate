@@ -10,7 +10,7 @@ import Constants from "../utils/Constants";
  */
 
 export default function AddFriend(props) {
-    return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
+    return <Dialog open={true} onClose={() => props.onClose()} fullWidth maxWidth={"md"}>
         <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
             <Grid container>
                 <Grid item xs={2}>
@@ -28,21 +28,18 @@ export default function AddFriend(props) {
 
                 <Grid item xs={2} style={{ display: "flex", justifyContent: "center", paddingBottom: 40, fontSize: 30, fontWeight: "bold" }}>
                     <Button onClick={() => {
-                        props.onOpen(false)
+                        props.onClose()
                     }}>
                         Exit
                     </Button>
                 </Grid>
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <LoginRegisterTextField label={"Director"} />
-            </Grid>
-            <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <LoginRegisterTextField label={"Movie Title"} />
+                <LoginRegisterTextField label={"Email"} />
             </Grid>
             <Grid container style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
                 <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "10vw", borderRadius: "10px" }} onClick={() => {
-                    props.onOpen(false)
+                    props.onClose()
                 }}>
                     <Typography style={{ color: Constants.WHITE }}>
                         Send

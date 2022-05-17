@@ -8,7 +8,7 @@ import React from "react";
  * MovieCard 
  */
 
-const MovieCard = () => {
+const MovieCard = (props) => {
 
     return (
         <div>
@@ -23,15 +23,15 @@ const MovieCard = () => {
                     marginLeft: 10,
                 }}>
 
-                <Grid item xs={4} sx={{
-                    bgcolor: Constants.MOVIEMATE_GREEN,
-                    heigth: 300,
-                    borderRadius: Constants.BORDER_RADIUS,
-                }}>
-                  {/* <img
-                        src={Spiderman}
-                        style={{ width: "100vh", height: "100vh" }}
-                    />   */}
+                <Grid item xs={4}>
+                    <img src={props.image}
+                        style={{
+                            backgroundSize: "cover",
+                            width: "100%",
+                            height: 300,
+                            borderRadius: "10px",
+                        }}
+                    />
                 </Grid>
 
                 <Grid
@@ -61,7 +61,7 @@ const MovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 500,
                             }}>
-                            Spider-Man No Way Home
+                            { props.title }
                         </Grid>
 
                         <Grid
@@ -73,7 +73,7 @@ const MovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300
                             }}>
-                            2021
+                            { props.productionYear }
 
                         </Grid>
                     </Grid>
@@ -98,7 +98,7 @@ const MovieCard = () => {
                                 textAlign: "left",
                                 fontWeight: 300,
                             }}>
-                            Action Fantastic
+                            {""}
                         </Grid>
                         <Grid
                             item xs={6}
@@ -110,7 +110,7 @@ const MovieCard = () => {
                                 fontWeight: 500,
                             }}
                         >
-                            3.66$
+                            { "$" + props.price }
                         </Grid>
                     </Grid>
                 </Grid>

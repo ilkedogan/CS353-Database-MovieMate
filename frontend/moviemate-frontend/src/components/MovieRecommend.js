@@ -5,6 +5,7 @@ import Constants from "../utils/Constants";
 import Avatar from '@mui/material/Avatar';
 import React, { useState } from "react";
 import { useStyles } from "../utils/AppStyles.js";
+import FriendCardRecommend from "./FriendCardRecommend";
 
 /**
  * İlke Doğan
@@ -15,81 +16,29 @@ import { useStyles } from "../utils/AppStyles.js";
 export default function MovieRecommend(props) {
 
     const classes = useStyles();
-    const [tabIndex, setTabIndex] = React.useState(0)
-    return <Dialog open={true} onClose={() => props.onOpen(false)} fullWidth maxWidth={"md"}>
-        <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
-            <Grid container>
-                <Grid item xs={2}>
 
-                </Grid>
-                <Grid item xs={8}
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        paddingBottom: 40,
-                        fontSize: 30
-                    }}>
-                    Recommend
-                </Grid>
-
-                <Grid item xs={2} style={{ display: "flex", justifyContent: "center", paddingBottom: 40, fontSize: 30, fontWeight: "bold" }}>
-                    <Button onClick={() => {
-                        props.onOpen(false)
-                    }}>
-                        Exit
-                    </Button>
-                </Grid>
-            </Grid>
-            <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <Avatar
-                    sx={{
-                        bgcolor: Constants.MOVIEMATE_GREEN,
-                        width: "7vh",
-                        height: "7vh",
-                        alignItems: 'center',
-                    }} src="/broken-image.jpg" />
-                <LoginRegisterTextField label={"Movie Title"} />
-                <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "7vw", borderRadius: "10px", margin: "2vh", height: "5vh" }} onClick={() => {
-                    props.onOpen(false)
+    return <Dialog open={true} onClose={() => props.onClose()} fullWidth maxWidth={"sm"}>
+        <Grid container style={{ alignItems: "center", display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '20px', paddingBottom: '70px' }}>
+            <Grid xs={1} />
+            <Grid xs={10} sx={{ display: "flex", justifyContent: "center" }}>                     
+            <Typography style={{
+                color: Constants.WHITE, display: "flex", justifyContent: "center", fontFamily: Constants.ROKKIT_FONT_FAMILY,
+                fontSize: "32px",
+            }}>
+                Recommend Movie
+            </Typography> </Grid>
+            <Grid xs={1} >
+                <Button onClick={() => {
+                    props.onClose()
                 }}>
-                    <Typography style={{ color: Constants.WHITE }}>
-                        Recommend
-                    </Typography>
+                    Exit
                 </Button>
             </Grid>
-            <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <Avatar
-                    sx={{
-                        bgcolor: Constants.MOVIEMATE_GREEN,
-                        width: "7vh",
-                        height: "7vh",
-                        alignItems: 'center',
-                    }} src="/broken-image.jpg" />
-                <LoginRegisterTextField label={"Movie Title"} />
-                <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "7vw", borderRadius: "10px", margin: "2vh", height: "5vh" }} onClick={() => {
-                    props.onOpen(false)
-                }}>
-                    <Typography style={{ color: Constants.WHITE }}>
-                        Recommend
-                    </Typography>
-                </Button>
+            <Grid container sx={{display: "flex", justifyContent: "center",}}>
+                <FriendCardRecommend></FriendCardRecommend>
             </Grid>
-            <Grid container style={{ display: "flex", justifyContent: "center", width: "60rem" }}>
-                <Avatar
-                    sx={{
-                        bgcolor: Constants.MOVIEMATE_GREEN,
-                        width: "7vh",
-                        height: "7vh",
-                        alignItems: 'center',
-                    }} src="/broken-image.jpg" />
-                <LoginRegisterTextField label={"Name Surname"} />
-                <Button style={{ background: Constants.MOVIEMATE_GREEN, width: "7vw", borderRadius: "10px", margin: "2vh", height: "5vh" }} onClick={() => {
-                    props.onOpen(false)
-                }}>
-                    <Typography style={{ color: Constants.WHITE }}>
-                        Recommend
-                    </Typography>
-                </Button>
+            <Grid container sx={{display: "flex", justifyContent: "center",}}>
+                <FriendCardRecommend></FriendCardRecommend>
             </Grid>
         </Grid>
 

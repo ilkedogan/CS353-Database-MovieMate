@@ -2,8 +2,10 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import Constants from "../../utils/Constants";
 import { Button } from "@mui/material";
-import WatchList from "../Watchlist";
 import ChangePassword from "../../components/ChangePassword";
+import WatchList from "./Watchlist";
+import MoviesRecommendedToMe from "./MoviesRecommendedToMe";
+import MyOrders from "./MyOrders";
 
 export default function SettingScreen( props ) {
 
@@ -33,7 +35,7 @@ export default function SettingScreen( props ) {
                         justifyContent: "left",
                         borderRadius: "12px",
                     } } onClick={ () => {
-                        props.onOpen( false )
+                        setSettingsPage(1)
                     } }>
                         Movies Recommended to Me
                     </Button>
@@ -154,7 +156,7 @@ export default function SettingScreen( props ) {
                             justifyContent: "left",
                             borderRadius: "12px",
                         } } onClick={ () => {
-                        props.onOpen( false )
+                        setSettingsPage(5)
                     } }>
                         My Orders
                     </Button>
@@ -163,9 +165,9 @@ export default function SettingScreen( props ) {
 
         </Grid>
         }
-
-
+        { settingsPage === 1 && <MoviesRecommendedToMe goBack={ () => setSettingsPage( 0 ) }/> }
         { settingsPage === 2 && <WatchList goBack={ () => setSettingsPage( 0 ) }/> }
         { settingsPage === 3 && <ChangePassword goBack={ () => setSettingsPage( 0 ) }/> }
+        { settingsPage === 5 && <MyOrders goBack={ () => setSettingsPage( 0 ) }/> }
     </div>
 }
