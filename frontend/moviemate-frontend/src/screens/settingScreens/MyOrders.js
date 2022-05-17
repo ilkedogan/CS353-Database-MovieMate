@@ -10,7 +10,7 @@ import CustomerOrderCard from "../../components/CustomerOrderCard";
  * MyOrders
  */
 
-const MyOrders = () => {
+const MyOrders = (props) => {
 
     return (
         <div style={{   background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" }}>
@@ -25,7 +25,7 @@ const MyOrders = () => {
                                         justifyContent: "left",
                                         marginLeft: "25px",
                     }}>
-                    <IconButton style={{color: Constants.WHITE}} aria-label="arrowBack">
+                    <IconButton onClick={() => props.goBack()} style={{color: Constants.WHITE}} aria-label="arrowBack">
                         <ArrowBackIosOutlinedIcon />
                     </IconButton>
                 </Grid>

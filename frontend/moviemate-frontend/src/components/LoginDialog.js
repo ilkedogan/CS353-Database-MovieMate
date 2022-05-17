@@ -15,6 +15,11 @@ import { ClosedCaption, CloseRounded } from "@mui/icons-material";
 import React from 'react'
 import { Alert } from "@mui/lab";
 
+/**
+ * Hacı Çakın
+ * 14.04.2022
+ * LoginDialog
+ */
 export default function LoginDialog( props ) {
     const [ userType, setUserType ] = React.useState( "Customer" )
     const [ email, setEmail ] = React.useState( "" )

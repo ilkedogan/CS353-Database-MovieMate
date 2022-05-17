@@ -3,6 +3,11 @@ import React from 'react'
 import { CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "@mui/lab";
 
+/**
+ * Aslı Dinç & Hacı Çakın
+ * 13.04.2022
+ * HomeScreen
+ */
 export default function HomeScreen( props ) {
     const [ error, setError ] = React.useState( "" )
     const [ movies, setMovies ] = React.useState( [] )

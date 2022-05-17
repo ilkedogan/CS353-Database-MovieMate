@@ -6,7 +6,7 @@ import React from "react";
 import { Margin } from "@mui/icons-material";
 
 /**
- * Metehan Sacakci
+ * Metehan Sacakci & Hacı Çakın & Aslı Dinç
  * 24.04.2022
  * MovieCardMovieDetailScreen
  */

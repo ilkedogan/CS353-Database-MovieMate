@@ -12,7 +12,7 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 export default function ChangePassword(props) {
     return  <Container sx={{minHeight: "100vh", minWidth: "100vw", background: Constants.MOVIEMATE_BACKGROUND}}>
     
-        <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '70px', paddingBottom: '70px' }}>
+        <Grid container style={{ display: "flex", justifyContent: "center", background: Constants.MOVIEMATE_BACKGROUND, color: Constants.WHITE, padding: '40px', paddingTop: '20px', paddingBottom: '70px' }}>
             <Grid container>
             <Grid item xs={1}>
                     <IconButton onClick={() => props.goBack()} style={{ color: Constants.WHITE }}

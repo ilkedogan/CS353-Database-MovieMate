@@ -5,7 +5,7 @@ import Constants from "../utils/Constants";
 import Avatar from '@mui/material/Avatar';
 import React, { useState } from "react";
 import { useStyles } from "../utils/AppStyles.js";
-import FriendCardRecommend from "./FriendCardRecommend";
+import FriendCardRequest from "./FriendCardRequest";
 
 /**
  * İlke Doğan & Aslı Dinç
@@ -13,7 +13,7 @@ import FriendCardRecommend from "./FriendCardRecommend";
  * MovieRecommend
  */
 
-export default function MovieRecommend(props) {
+export default function SendFriendRequestDialog(props) {
 
     const classes = useStyles();
 
@@ -25,7 +25,7 @@ export default function MovieRecommend(props) {
                 color: Constants.WHITE, display: "flex", justifyContent: "center", fontFamily: Constants.ROKKIT_FONT_FAMILY,
                 fontSize: "32px",
             }}>
-                Recommend Movie
+                Friend Requests
             </Typography> </Grid>
             <Grid xs={1} >
                 <Button onClick={() => {
@@ -35,10 +35,10 @@ export default function MovieRecommend(props) {
                 </Button>
             </Grid>
             <Grid container sx={{display: "flex", justifyContent: "center",}}>
-                <FriendCardRecommend></FriendCardRecommend>
+                <FriendCardRequest></FriendCardRequest>
             </Grid>
             <Grid container sx={{display: "flex", justifyContent: "center",}}>
-                <FriendCardRecommend></FriendCardRecommend>
+                <FriendCardRequest></FriendCardRequest>
             </Grid>
         </Grid>
 

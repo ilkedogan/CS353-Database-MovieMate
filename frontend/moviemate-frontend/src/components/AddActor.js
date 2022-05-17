@@ -15,7 +15,7 @@ import React from "react";
 import { Alert } from "@mui/lab";
 
 /**
- * İlke Doğan
+ * İlke Doğan & Hacı Çakın
  * 13.04.2022
  * Add a Actor
  */

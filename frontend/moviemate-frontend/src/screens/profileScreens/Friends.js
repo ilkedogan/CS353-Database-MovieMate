@@ -4,6 +4,7 @@ import Constants from "../../utils/Constants";
 import FriendCard from "../../components/FriendCard";
 import MockData from "../../MockData";
 import AddFriend from "../../components/AddFriend";
+import FriendRequests from "../../components/FriendRequests";
 
 /**
  * Aslı Dinç
@@ -59,7 +60,9 @@ export default function Friends(props) {
                 </Button>
             </Grid>
             <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: 2 }}>
-                <Button variant="contained" style={{
+                <Button 
+                    onClick={ () => setOpenDialog( "friendRequests" ) }
+                    variant="contained" style={{
                     backgroundColor: Constants.MOVIEMATE_GREEN,
                     fontFamily: Constants.ROKKIT_FONT_FAMILY,
                     fontSize: "12px",
@@ -75,6 +78,8 @@ export default function Friends(props) {
             {listItems}
         </div>
         { openDialog === "addFriend" ? <AddFriend
+            userData={ props.userData } open={ true } onClose={ () => setOpenDialog( "" ) }/> : 
+        openDialog === "friendRequests" ? <FriendRequests
             userData={ props.userData } open={ true } onClose={ () => setOpenDialog( "" ) }/> : null }
     </Grid>
 }

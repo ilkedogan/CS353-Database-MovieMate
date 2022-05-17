@@ -6,9 +6,9 @@ import React from 'react'
 import { Alert } from "@mui/lab";
 
 /**
- * İlke Doğan
+ * İlke Doğan & Hacı Çakın
  * 13.04.2022
- * Review Card
+ * Review Card 
  */
 export default function Review( props ) {
     const [ loading, setLoading ] = React.useState( false )

@@ -16,7 +16,7 @@ import Constants from '../utils/Constants';
 /**
  * Hacı Çakın
  * 14.04.2022
- * LoginDialog
+ * LoginRegisterTextField
  */
 export default function LoginRegisterTextField(props){
     const [value,setValue] = React.useState("")
