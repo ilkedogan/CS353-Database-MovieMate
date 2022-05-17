@@ -16,6 +16,7 @@ import EmployeeDeletedUsers from "./EmployeeDeletedUsers";
 import AdminEmployees from "./AdminEmployees";
 import { Alert } from "@mui/lab";
 import { Snackbar } from "@mui/material";
+import SearchResult from "./SearchResult";
 
 export default function MainScreen() {
     const [ loggedIn, setLoggedIn ] = useState( false )
@@ -26,6 +27,7 @@ export default function MainScreen() {
     const [ userData, setUserData ] = useState( null )
     const [ error, setError ] = useState( "" )
     const [ movieId, setMovieId ] = useState( 0 )
+    const [ searchUrl, setSearchUrl ] = useState( "" )
 
     async function getUser() {
         const headers = {
@@ -75,8 +77,10 @@ export default function MainScreen() {
     return <div style={ { background: Constants.MOVIEMATE_BACKGROUND, height: "100vh", overflowX: "hidden" } }>
         { loggedIn ?
             <MovieNavbarUser currentPage={ currentPage }
+                             userData={ userData }
                              loggedUserType={ loggedUserType }
                              setCurrentPage={ ( val ) => setCurrentPage( val ) }
+                             setSearchUrl={ ( val ) => setSearchUrl( val ) }
                              logout={ () => {
                                  localStorage.clear()
                                  setLoggedIn( false )
@@ -85,6 +89,7 @@ export default function MainScreen() {
                              } }
             /> :
             <MovieNavbar
+                setSearchUrl={ ( val ) => setSearchUrl( val ) }
                 setCurrentPage={ ( val ) => setCurrentPage( val ) }
                 openLoginDialog={ () => setLoginDialog( true ) }
                 openRegisterDialog={ () => setRegisterDialog( true ) }
@@ -108,7 +113,11 @@ export default function MainScreen() {
                                     currentPage === 4 ?
                                         <MovieDetailScreen userData={ userData } movieId={ movieId }
                                                            setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
-                                        <SettingScreen/> }
+                                        currentPage === 5 ?
+                                            <SearchResult searchUrl={ searchUrl } userData={ userData }
+                                                          loggedUserType={ loggedUserType }
+                                                          setCurrentPage={ ( val ) => setCurrentPage( val ) }/> :
+                                            <SettingScreen/> }
         { loginDialog &&
 
 

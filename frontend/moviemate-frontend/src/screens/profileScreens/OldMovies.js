@@ -43,8 +43,6 @@ export default function OldMovies( props ) {
             .catch( e => {
                 setError( e )
             } )
-
-
     }
 
 

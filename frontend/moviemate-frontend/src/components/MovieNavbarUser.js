@@ -23,13 +23,15 @@ import Alert from "@mui/material/Alert";
 import { useStyles } from "../utils/AppStyles.js";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { fontWeight } from "@mui/system";
+import { Filter, Filter2, Filter3Rounded, FilterAlt } from "@mui/icons-material";
+import AdvancedSearch from "./AdvancedSearch";
 
 export default function MovieNavbarUser( props ) {
-
+    const [ advancedSearch, setAdvancedSearch ] = React.useState( false )
     const [ inputText, setInputText ] = useState( "" );
+    const [ searchText, setSearchText ] = useState( "" )
 
     let inputHandler = ( e ) => {
-        //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
         setInputText( lowerCase );
     };
@@ -72,6 +74,18 @@ export default function MovieNavbarUser( props ) {
                         </InputLabel>
                         <FilledInput
                             type={ 'text' }
+                            value={ searchText }
+                            onChange={ ( e ) => setSearchText( e.target.value ) }
+                            onKeyDown={ ( e ) => {
+                                if ( e.key === 'Enter' && searchText.trim().length > 0 ) {
+
+                                    props.setSearchUrl(
+                                        process.env.REACT_APP_URL + "searchHistory?keyword=" + searchText + "&userId=" +
+                                        props.userData.id )
+                                    props.setCurrentPage( 5 )
+
+                                }
+                            } }
                             style={ {
                                 color: Constants.MOVIEMATE_NAVBAR_BACKGROUND,
                                 paddingLeft: 20,
@@ -88,14 +102,26 @@ export default function MovieNavbarUser( props ) {
                     </FormControl>
 
                 </Grid>
-                <Grid item xs={ 6 } style={ {
+                <Grid style={ {
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    color: Constants.WHITE
+                } } item xs={ 1 }>
+                    <FilterAlt onClick={ () => {
+                        setAdvancedSearch( true )
+                    } } style={ {
+                        cursor: "pointer",
+                    } }/>
+                </Grid>
+                <Grid item xs={ 5 } style={ {
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
                     paddingRight: "24px",
                 } }>
 
-                    {props.loggedUserType === "Customer"  && <div onClick={ () => {
+                    { props.loggedUserType === "Customer" && <div onClick={ () => {
                         props.setCurrentPage( 1 )
 
                     } }>
@@ -109,7 +135,7 @@ export default function MovieNavbarUser( props ) {
                         } }>
                             Cart </Typography>
                     </div> }
-                    {props.loggedUserType === "Customer"  && <div style={
+                    { props.loggedUserType === "Customer" && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -119,7 +145,7 @@ export default function MovieNavbarUser( props ) {
                         } }>
                         |
                     </div> }
-                    {props.loggedUserType === "Customer"  && <div onClick={ () => {
+                    { props.loggedUserType === "Customer" && <div onClick={ () => {
                         props.setCurrentPage( 2 )
                     } }>
                         <Typography
@@ -133,7 +159,7 @@ export default function MovieNavbarUser( props ) {
                             } }>
                             Profile </Typography>
                     </div> }
-                    {props.loggedUserType  === "Customer"  && <div style={
+                    { props.loggedUserType === "Customer" && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -143,7 +169,7 @@ export default function MovieNavbarUser( props ) {
                         } }>
                         |
                     </div> }
-                    {props.loggedUserType  === "Customer"  && <div onClick={ () => {
+                    { props.loggedUserType === "Customer" && <div onClick={ () => {
                         props.setCurrentPage( 3 )
 
                     } }>
@@ -157,7 +183,7 @@ export default function MovieNavbarUser( props ) {
                         } }>
                             Settings </Typography>
                     </div> }
-                    {props.loggedUserType === "Customer" && <div style={
+                    { props.loggedUserType === "Customer" && <div style={
                         {
                             fontSize: "28px",
                             width: "60px",
@@ -183,6 +209,9 @@ export default function MovieNavbarUser( props ) {
 
                 </Grid>
             </Grid>
+            { advancedSearch && <AdvancedSearch setSearchUrl={ ( val ) => props.setSearchUrl( val ) }
+                                                setCurrentPage={ ( val ) => props.setCurrentPage( val ) }
+                                                onClose={ () => setAdvancedSearch( false ) }/> }
         </div>
     );
 }

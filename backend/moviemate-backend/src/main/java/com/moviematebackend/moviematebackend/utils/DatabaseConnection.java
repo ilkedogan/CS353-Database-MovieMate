@@ -145,6 +145,9 @@ public class DatabaseConnection {
             statement = getInstance().connection.createStatement();
             statement.executeUpdate( TableStrings.directs );
 
+            statement = getInstance().connection.createStatement();
+            statement.executeUpdate( TableStrings.trigger );
+
             return true;
         } catch ( Exception e ) {
             System.out.println( e.getMessage() );

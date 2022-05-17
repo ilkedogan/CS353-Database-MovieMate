@@ -9,7 +9,8 @@ public class TableStrings {
             "password VARCHAR(50) NOT NULL, " +
             "first_name VARCHAR(50) NOT NULL, " +
             "last_name VARCHAR(50) NOT NULL, " +
-            "PRIMARY KEY(admin_id)  " +
+            "PRIMARY KEY(admin_id),  " +
+            "INDEX name (first_name, last_name) " +
             "); ";
 
     public static String employeeTable = "CREATE TABLE Employee( " +
@@ -19,8 +20,9 @@ public class TableStrings {
             "first_name VARCHAR(50) NOT NULL, " +
             "last_name VARCHAR(50) NOT NULL, " +
             "social_insurance_number VARCHAR(50) NOT NULL, " +
-            "PRIMARY KEY(employee_id) " +
-            ");";
+            "PRIMARY KEY(employee_id), " +
+            "INDEX name (first_name, last_name) " +
+            "); ";
 
     public static String customerTable = "CREATE TABLE Customer( " +
             "customer_id INT AUTO_INCREMENT, " +
@@ -29,8 +31,9 @@ public class TableStrings {
             "first_name VARCHAR(50) NOT NULL, " +
             "last_name VARCHAR(50) NOT NULL, " +
             "account_status VARCHAR(50) NOT NULL, " +
-            "PRIMARY KEY (customer_id) " +
-            ");";
+            "PRIMARY KEY (customer_id), " +
+            "INDEX name (first_name, last_name) " +
+            "); ";
 
     public static String wallet = "CREATE TABLE Wallet( " +
             "customer_id INT , " +
@@ -59,8 +62,9 @@ public class TableStrings {
             "name VARCHAR(50) NOT NULL, " +
             "surname VARCHAR(50) NOT NULL, " +
             "birth_year DATE NOT NULL, " +
-            "PRIMARY KEY(id) " +
-            ");"; // todo date constraint
+            "PRIMARY KEY(id), " +
+            "INDEX full_name (name, surname) " +
+            "); ";
 
     public static String genre = "CREATE TABLE Genre( " +
             "id INT AUTO_INCREMENT, " +
@@ -73,8 +77,9 @@ public class TableStrings {
             "name VARCHAR(50) NOT NULL, " +
             "surname VARCHAR(50) NOT NULL, " +
             "birth_year DATE NOT NULL, " +
-            "PRIMARY KEY(id) " +
-            ");"; // todo date constraint
+            "PRIMARY KEY(id), " +
+            "INDEX full_name (name, surname) " +
+            "); ";
 
     public static String movie = "CREATE TABLE Movie( " +
             "id INT AUTO_INCREMENT, " +
@@ -87,8 +92,9 @@ public class TableStrings {
             "employee_id INT NOT NULL, " +
             "PRIMARY KEY(id), " +
             "FOREIGN KEY(employee_id) REFERENCES Employee(employee_id), " +
-            "CHECK(price > 0) " +
-            ");";
+            "CHECK(price > 0), " +
+            "INDEX title_index (title) " +
+            "); ";
 
     public static String customerOrder = "CREATE TABLE Customer_Order( " +
             "id INT AUTO_INCREMENT, " +
@@ -281,4 +287,11 @@ public class TableStrings {
             "ON DELETE CASCADE " +
             "ON UPDATE CASCADE " +
             ");  ";
+
+    public static String trigger = "CREATE TRIGGER wallet_update " +
+            "AFTER INSERT ON Customer_Order " +
+            "FOR EACH ROW " +
+            "UPDATE Wallet " +
+            "SET amount = amount - new_row.total_amount " +
+            "WHERE customer_id = new_row.customer_id ";
 }
